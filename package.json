@@ -23,7 +23,18 @@
       "dummy"
     ],
     "resources": {
-      "media": []
+      "media": [
+	{
+		"type": "bitmap",
+		"name": "CHECKED",
+		"file": "images/checked.png"
+	},
+	{
+		"type": "bitmap",
+                "name": "UNCHECKED",
+                "file": "images/unchecked.png"
+	}
+      ]
     }
   }
 }

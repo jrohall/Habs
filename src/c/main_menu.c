@@ -2,6 +2,7 @@
  
 static Window *window;
 static MenuLayer *menu_layer;
+static BitmapLayer *unchecked_icon, *checked_icon;
  
 
 // Menus need many inputs in order to function properly, which is where these callbacks come into play
@@ -63,6 +64,8 @@ void select_click_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *c
  
     //Do the vibration pattern!
     vibes_enqueue_custom_pattern(pattern);
+
+
     
 }
 
