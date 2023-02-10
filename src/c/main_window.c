@@ -1,8 +1,10 @@
 #include <pebble.h>
+
+#include "windows/icon_window.h"
  
 static Window *window;
 static MenuLayer *menu_layer;
-static BitmapLayer *unchecked_icon, *checked_icon;
+//static BitmapLayer *unchecked_icon, *checked_icon;
  
 
 // Menus need many inputs in order to function properly, which is where these callbacks come into play
@@ -10,8 +12,7 @@ static BitmapLayer *unchecked_icon, *checked_icon;
 
 // alters what is drawn in a row based on which index it is
 // we need to tell the function which row is which based on a switch method:
-void draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context)
-{
+void draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context){
     //Which row is it?
     switch(cell_index->row)
     {
@@ -45,6 +46,27 @@ void select_click_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *c
     //Get which row
     int which = cell_index->row;
  
+
+    switch(which) {
+        case 0:
+            icon_window_push();
+            break;
+        case 1:
+            //icon_window_push();
+            break;
+        case 2:
+            //icon_window_push();
+            break;
+        case 3:
+            //icon_window_push();
+            break;
+        case 4:
+            //icon_window_push();
+            break;
+
+    }
+
+    /* ADD VIBRATIONS WHEN SELECT BUTTON IS PRESSED
     //The array that will hold the on/off vibration times
     uint32_t segments[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
  
@@ -64,7 +86,7 @@ void select_click_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *c
  
     //Do the vibration pattern!
     vibes_enqueue_custom_pattern(pattern);
-
+    */
 
     
 }
