@@ -1,6 +1,6 @@
 {
   "name": "pebble_habit_tracker",
-  "author": "MakeAwesomeHappen",
+  "author": "jerroh",
   "version": "1.0.0",
   "keywords": ["pebble-app"],
   "private": true,
@@ -33,7 +33,13 @@
 		"type": "bitmap",
                 "name": "UNCHECKED",
                 "file": "images/unchecked.png"
-	}
+	},
+	{
+                "type": "bitmap",
+                "name": "CHALK_ICON",
+                "file": "images/spike_chalk.pbl.png"
+        }
+
       ]
     }
   }

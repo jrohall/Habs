@@ -10,7 +10,7 @@
     "messageKeys": {
         "dummy": 10000
     }, 
-    "companyName": "MakeAwesomeHappen", 
+    "companyName": "jerroh", 
     "enableMultiJS": true, 
     "versionLabel": "1.0", 
     "capabilities": [], 
@@ -24,7 +24,23 @@
         "watchface": false
     }, 
     "resources": {
-        "media": []
+        "media": [
+            {
+                "type": "bitmap", 
+                "name": "CHECKED", 
+                "file": "images/checked.png"
+            }, 
+            {
+                "type": "bitmap", 
+                "name": "UNCHECKED", 
+                "file": "images/unchecked.png"
+            }, 
+            {
+                "type": "bitmap", 
+                "name": "CHALK_ICON", 
+                "file": "images/spike_chalk.pbl.png"
+            }
+        ]
     }, 
     "uuid": "75e4c603-51c9-4f3b-b9c9-86a38ab19ac1"
 }

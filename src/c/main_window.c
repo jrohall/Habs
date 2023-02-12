@@ -5,7 +5,6 @@
  
 static Window *window;
 static MenuLayer *menu_layer;
-//static BitmapLayer *unchecked_icon, *checked_icon;
  
 
 // Menus need many inputs in order to function properly, which is where these callbacks come into play

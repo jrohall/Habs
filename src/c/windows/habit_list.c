@@ -2,7 +2,8 @@
 
 static Window *habit_window;
 static MenuLayer *habit_menu_layer;
- 
+static GBitmap *unchecked_icon, *checked_icon;
+static bool s_selections[HABIT_WINDOW_ROWS];
 
 // Menus need many inputs in order to function properly, which is where these callbacks come into play
 // These callbacks must be defined BEFORE (above) tthe window_load function
@@ -11,32 +12,54 @@ static MenuLayer *habit_menu_layer;
 // we need to tell the function which row is which based on a switch method:
 void h_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context)
 {
-    //Which row is it?
-    switch(cell_index->row)
-    {
-    case 0:
-        menu_cell_basic_draw(ctx, cell_layer, "Exercise", "Follow muscle growth regiment.", NULL);
-        break;
-    case 1:
-        menu_cell_basic_draw(ctx, cell_layer, "Read", "25 Pages per day", NULL);
-        break;
-    case 2:
-        menu_cell_basic_draw(ctx, cell_layer, "Study", "Continue online class", NULL);
-        break;
-    case 3:
-        menu_cell_basic_draw(ctx, cell_layer, "Meditate", "Five Minutes after workout.", NULL);
-        break;
-    case 4:
-        menu_cell_basic_draw(ctx, cell_layer, "Code", "Spend at least one hour on project", NULL);
-        break;
+
+	if(cell_index->row == HABIT_WINDOW_ROWS) {
+    // i am using a submit button for a user to submit which habits they have complete, which
+    // should (hopefully) connect to another window which provides statistics on the user's habits
+    	menu_cell_basic_draw(ctx, cell_layer, "Submit", "(submit checked habits)", NULL);
+  	} 
+  	else {
+	    // main habits in list (must integrate custom user list later)
+	    static char habit_list_buff[16];
+	    snprintf(habit_list_buff, sizeof(habit_list_buff), "Habit %d", (int)cell_index->row);
+	    menu_cell_basic_draw(ctx, cell_layer, habit_list_buff, NULL, NULL);
+	}
+
+    // setting the checked and unchecked pointers
+    GBitmap *un_ptr = unchecked_icon;
+    GBitmap *ch_ptr = checked_icon;
+
+    // check if selected, invert colors if so
+    if(menu_cell_layer_is_highlighted(cell_layer)) {
+      graphics_context_set_stroke_color(ctx, GColorWhite);
+      //invert the checker bitmaps
+
     }
-    // ideally, the NULL methods would be replaced with a bitmap icon, but we arent doing that here (for now)
+
+    // grab the dimensions of the checkboxes and the rows
+	GRect bounds = layer_get_bounds(cell_layer);
+    GRect bitmap_bounds = gbitmap_get_bounds(un_ptr);
+
+    // draw the check boxes
+    GRect r = GRect(bounds.size.w - (2 * HABIT_BOX_SIZE), (bounds.size.h / 2) - (HABIT_BOX_SIZE / 2), HABIT_BOX_SIZE, HABIT_BOX_SIZE);
+
+    // draw an unchecked box if the row is not the submission row
+    if(cell_index->row != HABIT_WINDOW_ROWS){
+        //graphics_draw_rect(ctx, r);
+        graphics_context_set_compositing_mode(ctx, GCompOpSet);
+        graphics_draw_bitmap_in_rect(ctx, un_ptr, GRect(r.origin.x, r.origin.y - 3, bitmap_bounds.size.w, bitmap_bounds.size.h));
+    }
+    // draw the selected checkbox if a (non-submit) row is selected
+    if(s_selections[cell_index->row]) {
+        graphics_context_set_compositing_mode(ctx, GCompOpSet);
+        graphics_draw_bitmap_in_rect(ctx, ch_ptr, GRect(r.origin.x, r.origin.y - 3, bitmap_bounds.size.w, bitmap_bounds.size.h));
+    }
 }
  
- // simply returns the number of rows wanted in a list
+// simply returns the number of rows wanted in a list
 uint16_t h_num_rows_callback(MenuLayer *habit_menu_layer, uint16_t section_index, void *callback_context)
 {
-  return 5;
+  return HABIT_WINDOW_ROWS + 1;
 }
  
 void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index, void *callback_context)
@@ -63,6 +86,25 @@ void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index,
  
     //Do the vibration pattern!
     vibes_enqueue_custom_pattern(pattern);
+
+
+    // check if the submit button is pressed firstt, then check the other rows
+    if(cell_index->row == HABIT_WINDOW_ROWS) {
+    // add to checked boxes statistics page (will do after this window is complete)
+
+    // pebble UI example loop:
+    /*for(int i = 0; i < CHECKBOX_WINDOW_NUM_ROWS; i++) {
+      APP_LOG(APP_LOG_LEVEL_INFO, "Option %d was %s", i, (s_selections[i] ? "selected" : "not selected"));
+    }*/
+
+    // return to previous window (in this case, the main menu.)
+    window_stack_pop(true);
+  } else {
+    // this is for the rest of the habits, we need to know when they are being checked and unchecked.
+    int row = cell_index->row;
+    s_selections[row] = !s_selections[row];
+    //menu_layer_reload_data(habit_menu_layer); // ideally reloads the window??
+  }
     
 }
 
@@ -80,11 +122,15 @@ void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index,
 // observe how this is carried out below:
 void habit_window_load(Window *window)
 {
-    //Create it - 12 is approx height of the top bar
-    habit_menu_layer = menu_layer_create(GRect(0, 0, 144, 168 - 16));
+    // create it
+    habit_menu_layer = menu_layer_create(GRect(0, 0, 144, 168));
  
-    //Let it receive clicks
+    // let it receive clicks
     menu_layer_set_click_config_onto_window(habit_menu_layer, habit_window);
+
+    // bitmap initializations
+    unchecked_icon = gbitmap_create_with_resource(RESOURCE_ID_UNCHECKED);
+    checked_icon = gbitmap_create_with_resource(RESOURCE_ID_CHECKED);
  
     //Give it its callbacks
     MenuLayerCallbacks callbacks = {
@@ -103,6 +149,8 @@ void habit_window_load(Window *window)
 void habit_window_unload(Window *window)
 {
   menu_layer_destroy(habit_menu_layer);
+  gbitmap_destroy(checked_icon);
+  gbitmap_destroy(unchecked_icon);
 }
  
 void habit_list_push() {
