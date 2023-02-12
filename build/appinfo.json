@@ -39,6 +39,16 @@
                 "type": "bitmap", 
                 "name": "CHALK_ICON", 
                 "file": "images/spike_chalk.pbl.png"
+            }, 
+            {
+                "type": "bitmap", 
+                "name": "WHITE_CHECKED", 
+                "file": "images/white_checked.png"
+            }, 
+            {
+                "type": "bitmap", 
+                "name": "WHITE_UNCHECKED", 
+                "file": "images/white_unchecked.png"
             }
         ]
     }, 

@@ -2,7 +2,7 @@
 
 static Window *habit_window;
 static MenuLayer *habit_menu_layer;
-static GBitmap *unchecked_icon, *checked_icon;
+static GBitmap *unchecked_icon, *checked_icon, *white_checked_icon, *white_unchecked_icon;
 static bool s_selections[HABIT_WINDOW_ROWS];
 
 // Menus need many inputs in order to function properly, which is where these callbacks come into play
@@ -33,7 +33,8 @@ void h_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index
     if(menu_cell_layer_is_highlighted(cell_layer)) {
       graphics_context_set_stroke_color(ctx, GColorWhite);
       //invert the checker bitmaps
-
+      un_ptr = white_unchecked_icon;
+      ch_ptr = white_checked_icon;
     }
 
     // grab the dimensions of the checkboxes and the rows
@@ -45,7 +46,6 @@ void h_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index
 
     // draw an unchecked box if the row is not the submission row
     if(cell_index->row != HABIT_WINDOW_ROWS){
-        //graphics_draw_rect(ctx, r);
         graphics_context_set_compositing_mode(ctx, GCompOpSet);
         graphics_draw_bitmap_in_rect(ctx, un_ptr, GRect(r.origin.x, r.origin.y - 3, bitmap_bounds.size.w, bitmap_bounds.size.h));
     }
@@ -130,7 +130,9 @@ void habit_window_load(Window *window)
 
     // bitmap initializations
     unchecked_icon = gbitmap_create_with_resource(RESOURCE_ID_UNCHECKED);
+    white_unchecked_icon = gbitmap_create_with_resource(RESOURCE_ID_WHITE_UNCHECKED);
     checked_icon = gbitmap_create_with_resource(RESOURCE_ID_CHECKED);
+    white_checked_icon = gbitmap_create_with_resource(RESOURCE_ID_WHITE_CHECKED);
  
     //Give it its callbacks
     MenuLayerCallbacks callbacks = {
