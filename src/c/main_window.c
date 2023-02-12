@@ -1,6 +1,7 @@
 #include <pebble.h>
 
 #include "windows/icon_window.h"
+#include "windows/habit_list.h"
  
 static Window *window;
 static MenuLayer *menu_layer;
@@ -17,19 +18,13 @@ void draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, 
     switch(cell_index->row)
     {
     case 0:
-        menu_cell_basic_draw(ctx, cell_layer, "Exercise", "Follow muscle growth regiment.", NULL);
+        menu_cell_basic_draw(ctx, cell_layer, "Habits", "-> habit list", NULL);
         break;
     case 1:
-        menu_cell_basic_draw(ctx, cell_layer, "Read", "25 Pages per day", NULL);
+        menu_cell_basic_draw(ctx, cell_layer, "Statistics", "-> habit stats", NULL);
         break;
     case 2:
-        menu_cell_basic_draw(ctx, cell_layer, "Study", "Continue online class", NULL);
-        break;
-    case 3:
-        menu_cell_basic_draw(ctx, cell_layer, "Meditate", "Five Minutes after workout.", NULL);
-        break;
-    case 4:
-        menu_cell_basic_draw(ctx, cell_layer, "Code", "Spend at least one hour on project", NULL);
+        menu_cell_basic_draw(ctx, cell_layer, "Options", "-> habit settings", NULL);
         break;
     }
     // ideally, the NULL methods would be replaced with a bitmap icon, but we arent doing that here (for now)
@@ -38,7 +33,7 @@ void draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, 
  // simply returns the number of rows wanted in a list
 uint16_t num_rows_callback(MenuLayer *menu_layer, uint16_t section_index, void *callback_context)
 {
-  return 5;
+  return 3;
 }
  
 void select_click_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *callback_context)
@@ -49,21 +44,14 @@ void select_click_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *c
 
     switch(which) {
         case 0:
-            icon_window_push();
+            habit_list_push();
             break;
         case 1:
-            //icon_window_push();
+            icon_window_push();
             break;
         case 2:
-            //icon_window_push();
+            icon_window_push();
             break;
-        case 3:
-            //icon_window_push();
-            break;
-        case 4:
-            //icon_window_push();
-            break;
-
     }
 
     /* ADD VIBRATIONS WHEN SELECT BUTTON IS PRESSED
