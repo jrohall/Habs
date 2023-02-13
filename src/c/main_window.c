@@ -2,6 +2,7 @@
 
 #include "windows/icon_window.h"
 #include "windows/habit_list.h"
+#include "windows/stats_window.h"
  
 static Window *window;
 static MenuLayer *menu_layer;
@@ -46,7 +47,7 @@ void select_click_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *c
             habit_list_push();
             break;
         case 1:
-            icon_window_push();
+            stats_window_push();
             break;
         case 2:
             icon_window_push();

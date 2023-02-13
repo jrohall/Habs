@@ -1,9 +1,11 @@
 #include "habit_list.h"
+#include "global.h"
 
 static Window *habit_window;
 static MenuLayer *habit_menu_layer;
 static GBitmap *unchecked_icon, *checked_icon, *white_checked_icon, *white_unchecked_icon;
 static bool s_selections[HABIT_WINDOW_ROWS];
+int habit_stats[10];
 
 // Menus need many inputs in order to function properly, which is where these callbacks come into play
 // These callbacks must be defined BEFORE (above) tthe window_load function
@@ -29,31 +31,36 @@ void h_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index
     GBitmap *un_ptr = unchecked_icon;
     GBitmap *ch_ptr = checked_icon;
 
-    // check if selected, invert colors if so
-    if(menu_cell_layer_is_highlighted(cell_layer)) {
-      graphics_context_set_stroke_color(ctx, GColorWhite);
-      //invert the checker bitmaps
-      un_ptr = white_unchecked_icon;
-      ch_ptr = white_checked_icon;
-    }
-
     // grab the dimensions of the checkboxes and the rows
-	GRect bounds = layer_get_bounds(cell_layer);
+    GRect bounds = layer_get_bounds(cell_layer);
     GRect bitmap_bounds = gbitmap_get_bounds(un_ptr);
 
     // draw the check boxes
-    GRect r = GRect(bounds.size.w - (2 * HABIT_BOX_SIZE), (bounds.size.h / 2) - (HABIT_BOX_SIZE / 2), HABIT_BOX_SIZE, HABIT_BOX_SIZE);
+    GRect ptr_dim = GRect(bounds.size.w - (2 * HABIT_BOX_SIZE), (bounds.size.h / 2) - (HABIT_BOX_SIZE / 2), HABIT_BOX_SIZE, HABIT_BOX_SIZE);
+
+    // check if selected, invert colors if so
+    
+    if(menu_cell_layer_is_highlighted(cell_layer)) {
+        graphics_context_set_stroke_color(ctx, GColorWhite);
+        //invert the checker bitmaps
+        un_ptr = white_unchecked_icon;
+        ch_ptr = white_checked_icon;
+    }
 
     // draw an unchecked box if the row is not the submission row
     if(cell_index->row != HABIT_WINDOW_ROWS){
         graphics_context_set_compositing_mode(ctx, GCompOpSet);
-        graphics_draw_bitmap_in_rect(ctx, un_ptr, GRect(r.origin.x, r.origin.y - 3, bitmap_bounds.size.w, bitmap_bounds.size.h));
+        graphics_draw_bitmap_in_rect(ctx, un_ptr, GRect(ptr_dim.origin.x, ptr_dim.origin.y - 3, bitmap_bounds.size.w, bitmap_bounds.size.h));
     }
     // draw the selected checkbox if a (non-submit) row is selected
     if(s_selections[cell_index->row]) {
         graphics_context_set_compositing_mode(ctx, GCompOpSet);
-        graphics_draw_bitmap_in_rect(ctx, ch_ptr, GRect(r.origin.x, r.origin.y - 3, bitmap_bounds.size.w, bitmap_bounds.size.h));
+        graphics_draw_bitmap_in_rect(ctx, ch_ptr, GRect(ptr_dim.origin.x, ptr_dim.origin.y - 3, bitmap_bounds.size.w, bitmap_bounds.size.h));
     }
+
+    // BUG LOG:
+    // - The check boxes only change colors when cell selection moves
+    // - The check boxes are slightly off center
 }
  
 // simply returns the number of rows wanted in a list
@@ -93,9 +100,10 @@ void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index,
     // add to checked boxes statistics page (will do after this window is complete)
 
     // pebble UI example loop:
-    /*for(int i = 0; i < CHECKBOX_WINDOW_NUM_ROWS; i++) {
-      APP_LOG(APP_LOG_LEVEL_INFO, "Option %d was %s", i, (s_selections[i] ? "selected" : "not selected"));
-    }*/
+    for(int i = 0; i < HABIT_WINDOW_ROWS; i++) {
+        habit_stats[i] = 0;
+        //APP_LOG(APP_LOG_LEVEL_INFO, "Option %d was %s", i, (s_selections[i] ? "selected" : "not selected"));
+    }
 
     // return to previous window (in this case, the main menu.)
     window_stack_pop(true);
