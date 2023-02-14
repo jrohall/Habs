@@ -1,5 +1,5 @@
 #include "stats_window.h"
-#include "global.h"
+//#include "global.h"
 #include "habit_list.h"
 
 Window *stats_window;
@@ -11,24 +11,27 @@ TextLayer *habit_0, *habit_1, *habit_2, *habit_3, *habit_4, *habit_5, *habit_6, 
 void stats_window_load(Window *window){
 	Layer *window_layer = window_get_root_layer(window);
 
-  stats_text = text_layer_create(GRect(5, 5, 148, 166));
+	int label_x = 5;
+  stats_text = text_layer_create(GRect(label_x, 5, 148, 166));
   text_layer_set_text(stats_text, "Habit 1: \nHabit 2: \nHabit 3: \nHabit 4: \nHabit 5: \nHabit 6: \nHabit 7: \nHabit 8: \nHabit 9: \nHabit 10: \n");
   text_layer_set_background_color(stats_text, GColorClear);
   //text_layer_set_text_alignment(stats_text, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(stats_text));
 
-  // again, I know this hurts :,)
+  // loading in the stats from the habits page
   int *habit_stats = load_data();
+
+  // adding a buffer for the converted nums
   static char habit_buff[16];
 	snprintf(habit_buff, sizeof(habit_buff), "%d", habit_stats[0]);
-  habit_0 = text_layer_create(GRect(70, 80, 148, 166));
+  habit_0 = text_layer_create(GRect(label_x + 50, 5, 148, 166));
   text_layer_set_text(habit_0, habit_buff);
   text_layer_set_font(habit_0, fonts_get_system_font(FONT_KEY_GOTHIC_14));
   text_layer_set_background_color(habit_0, GColorClear);
   layer_add_child(window_layer, text_layer_get_layer(habit_0));
 
 }
- 
+
 void stats_window_unload(Window *window){
 	//Destroy TextLayer
 	text_layer_destroy(stats_text);

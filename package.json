@@ -2,9 +2,13 @@
   "name": "pebble_habit_tracker",
   "author": "jerroh",
   "version": "1.0.0",
-  "keywords": ["pebble-app"],
+  "keywords": [
+    "pebble-app"
+  ],
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "pebble-clay": "^1.0.4"
+  },
   "pebble": {
     "displayName": "pebble_habit_tracker",
     "uuid": "75e4c603-51c9-4f3b-b9c9-86a38ab19ac1",
@@ -24,22 +28,31 @@
     ],
     "resources": {
       "media": [
-	{
-		"type": "bitmap",
-		"name": "CHECKED",
-		"file": "images/checked.png"
-	},
-	{
-		"type": "bitmap",
-                "name": "UNCHECKED",
-                "file": "images/unchecked.png"
-	},
-	{
-                "type": "bitmap",
-                "name": "CHALK_ICON",
-                "file": "images/spike_chalk.pbl.png"
+        {
+          "type": "bitmap",
+          "name": "CHECKED",
+          "file": "images/checked.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "UNCHECKED",
+          "file": "images/unchecked.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "CHALK_ICON",
+          "file": "images/spike_chalk.pbl.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "WHITE_CHECKED",
+          "file": "images/white_checked.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "WHITE_UNCHECKED",
+          "file": "images/white_unchecked.png"
         }
-
       ]
     }
   }

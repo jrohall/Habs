@@ -79,7 +79,7 @@ uint16_t h_num_rows_callback(MenuLayer *habit_menu_layer, uint16_t section_index
 {
   return HABIT_WINDOW_ROWS + 1;
 }
- 
+
 void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index, void *callback_context)
 {
     //Get which row
@@ -112,7 +112,9 @@ void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index,
 
     // pebble UI example loop:
     for(int i = 0; i < HABIT_WINDOW_ROWS; i++) {
-        habit_stats[i] = 2;
+        if(s_selections[i]) {
+            habit_stats[i] += 1;
+        }
         //APP_LOG(APP_LOG_LEVEL_INFO, "Option %d was %s", i, (s_selections[i] ? "selected" : "not selected"));
     }
     save_stats();
@@ -140,8 +142,7 @@ void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index,
 
 
 // observe how this is carried out below:
-void habit_window_load(Window *window)
-{
+void habit_window_load(Window *window){
     // create it
     habit_menu_layer = menu_layer_create(GRect(0, 0, 144, 168));
  
@@ -168,8 +169,7 @@ void habit_window_load(Window *window)
 }
  
 // and, of course, dont forgett to de-init the layer!
-void habit_window_unload(Window *window)
-{
+void habit_window_unload(Window *window){
   menu_layer_destroy(habit_menu_layer);
   gbitmap_destroy(checked_icon);
   gbitmap_destroy(unchecked_icon);
