@@ -6,7 +6,7 @@ Window *stats_window;
 TextLayer *stats_text;
 // I KNOW this is not the best way of doing this, please forgive me, I am new to pebble development!
 TextLayer *habit_0, *habit_1, *habit_2, *habit_3, *habit_4, *habit_5, *habit_6, *habit_7, *habit_8, *habit_9;
-extern int habit_stats[10];
+//extern int habit_stats[10];
 
 void stats_window_load(Window *window){
 	Layer *window_layer = window_get_root_layer(window);
@@ -18,6 +18,7 @@ void stats_window_load(Window *window){
   layer_add_child(window_layer, text_layer_get_layer(stats_text));
 
   // again, I know this hurts :,)
+  int *habit_stats = load_data();
   static char habit_buff[16];
 	snprintf(habit_buff, sizeof(habit_buff), "%d", habit_stats[0]);
   habit_0 = text_layer_create(GRect(70, 80, 148, 166));

@@ -7,6 +7,17 @@ static GBitmap *unchecked_icon, *checked_icon, *white_checked_icon, *white_unche
 static bool s_selections[HABIT_WINDOW_ROWS];
 int habit_stats[10];
 
+// in order to save the habit data to persistant storage, there are a few functions that need to be declared..
+void save_stats(){
+    persist_write_data(0, habit_stats, sizeof(habit_stats));
+}
+// this function is included in the header, which can be accessed from the stats page!
+int * load_data(){
+    persist_read_data(0, habit_stats, sizeof(habit_stats));
+    return habit_stats;
+}
+
+
 // Menus need many inputs in order to function properly, which is where these callbacks come into play
 // These callbacks must be defined BEFORE (above) tthe window_load function
 
@@ -104,6 +115,7 @@ void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index,
         habit_stats[i] = 2;
         //APP_LOG(APP_LOG_LEVEL_INFO, "Option %d was %s", i, (s_selections[i] ? "selected" : "not selected"));
     }
+    save_stats();
 
     // return to previous window (in this case, the main menu.)
     window_stack_pop(true);
@@ -172,8 +184,4 @@ void habit_list_push() {
     });
   }
   window_stack_push(habit_window, true);
-}
-
-int * get_stats(){
-    return habit_stats;
 }
