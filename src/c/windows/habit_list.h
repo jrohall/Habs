@@ -7,3 +7,4 @@
 #define HABIT_ROW_HEIGHT	44
 
 void habit_list_push();
+int * get_stats();

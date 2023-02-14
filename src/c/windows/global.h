@@ -1,3 +1,3 @@
 #include <pebble.h>
 
-extern int habit_stats[10];
+extern int habit_list[10];

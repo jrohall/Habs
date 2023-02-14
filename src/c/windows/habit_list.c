@@ -1,5 +1,5 @@
 #include "habit_list.h"
-#include "global.h"
+//#include "global.h"
 
 static Window *habit_window;
 static MenuLayer *habit_menu_layer;
@@ -101,7 +101,7 @@ void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index,
 
     // pebble UI example loop:
     for(int i = 0; i < HABIT_WINDOW_ROWS; i++) {
-        habit_stats[i] = 0;
+        habit_stats[i] = 2;
         //APP_LOG(APP_LOG_LEVEL_INFO, "Option %d was %s", i, (s_selections[i] ? "selected" : "not selected"));
     }
 
@@ -172,4 +172,8 @@ void habit_list_push() {
     });
   }
   window_stack_push(habit_window, true);
+}
+
+int * get_stats(){
+    return habit_stats;
 }
