@@ -24,7 +24,7 @@ void stats_window_load(Window *window){
   // adding a buffer for the converted nums
   static char habit_buff[16];
 	snprintf(habit_buff, sizeof(habit_buff), "%d", habit_stats[0]);
-  habit_0 = text_layer_create(GRect(label_x + 50, 5, 148, 166));
+  habit_0 = text_layer_create(GRect(label_x + 65, 5, 148, 166));
   text_layer_set_text(habit_0, habit_buff);
   text_layer_set_font(habit_0, fonts_get_system_font(FONT_KEY_GOTHIC_14));
   text_layer_set_background_color(habit_0, GColorClear);

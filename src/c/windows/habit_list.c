@@ -64,7 +64,7 @@ void h_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index
         graphics_draw_bitmap_in_rect(ctx, un_ptr, GRect(ptr_dim.origin.x, ptr_dim.origin.y - 3, bitmap_bounds.size.w, bitmap_bounds.size.h));
     }
     // draw the selected checkbox if a (non-submit) row is selected
-    if(s_selections[cell_index->row]) {
+    if(s_selections[cell_index->row] && cell_index->row != HABIT_WINDOW_ROWS) {
         graphics_context_set_compositing_mode(ctx, GCompOpSet);
         graphics_draw_bitmap_in_rect(ctx, ch_ptr, GRect(ptr_dim.origin.x, ptr_dim.origin.y - 3, bitmap_bounds.size.w, bitmap_bounds.size.h));
     }
