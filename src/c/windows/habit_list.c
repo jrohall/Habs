@@ -73,7 +73,7 @@ void h_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index
     // - The check boxes only change colors when cell selection moves
     // - The check boxes are slightly off center
 }
- 
+
 // simply returns the number of rows wanted in a list
 uint16_t h_num_rows_callback(MenuLayer *habit_menu_layer, uint16_t section_index, void *callback_context)
 {

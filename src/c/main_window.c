@@ -35,7 +35,7 @@ uint16_t num_rows_callback(MenuLayer *menu_layer, uint16_t section_index, void *
 {
   return 3;
 }
- 
+  
 void select_click_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *callback_context)
 {
     //Get which row
