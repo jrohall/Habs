@@ -1,5 +1,4 @@
 #include "habit_list.h"
-//#include "global.h"
 
 static Window *habit_window;
 static MenuLayer *habit_menu_layer;
