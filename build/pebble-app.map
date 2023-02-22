@@ -11,7 +11,6 @@ habit_stats         0x28              src/c/windows/habit_list.c.33.o
 habit_5             0x4               src/c/windows/stats_window.c.33.o
 habit_2             0x4               src/c/windows/stats_window.c.33.o
 icon_bitmap         0x4               src/c/windows/icon_window.c.33.o
-habit_list          0x28              src/c/windows/clay_window.c.33.o
 habit_9             0x4               src/c/windows/stats_window.c.33.o
 habit_3             0x4               src/c/windows/stats_window.c.33.o
 icon_window         0x4               src/c/windows/icon_window.c.33.o
@@ -40,11 +39,23 @@ Discarded input sections
                 0x0000000000000000        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
  .text          0x0000000000000000        0x0 src/c/main_window.c.33.o
  .bss           0x0000000000000000        0x0 src/c/main_window.c.33.o
- .text          0x0000000000000000        0x0 src/c/windows/clay_window.c.33.o
- .bss           0x0000000000000000        0x0 src/c/windows/clay_window.c.33.o
+ .text          0x0000000000000000        0x0 src/c/windows/clay_settings.c.33.o
+ .bss           0x0000000000000000        0x0 src/c/windows/clay_settings.c.33.o
+ .text.set_habit_text
+                0x0000000000000000        0xe src/c/windows/clay_settings.c.33.o
+ .text.outbox_s
+                0x0000000000000000       0x18 src/c/windows/clay_settings.c.33.o
+ .text.outbox_f
+                0x0000000000000000       0x18 src/c/windows/clay_settings.c.33.o
+ .text.inbox_d  0x0000000000000000       0x18 src/c/windows/clay_settings.c.33.o
+ .text.inbox_r  0x0000000000000000      0x4c4 src/c/windows/clay_settings.c.33.o
  .text.get_habits
-                0x0000000000000000       0x14 src/c/windows/clay_window.c.33.o
- COMMON         0x0000000000000000       0x28 src/c/windows/clay_window.c.33.o
+                0x0000000000000000       0xfc src/c/windows/clay_settings.c.33.o
+ .bss.settings  0x0000000000000000       0x64 src/c/windows/clay_settings.c.33.o
+ .rodata.str1.1
+                0x0000000000000000       0x9d src/c/windows/clay_settings.c.33.o
+ .bss.total_elements
+                0x0000000000000000        0x4 src/c/windows/clay_settings.c.33.o
  .text          0x0000000000000000        0x0 src/c/windows/habit_list.c.33.o
  .bss           0x0000000000000000        0x0 src/c/windows/habit_list.c.33.o
  .text          0x0000000000000000        0x0 src/c/windows/icon_window.c.33.o
@@ -67,7 +78,25 @@ Discarded input sections
                 0x0000000000000000        0x4 aplite/src/resource_ids.auto.c.33.o
  .text          0x0000000000000000        0x0 src/message_keys.auto.c.33.o
  .bss           0x0000000000000000        0x0 src/message_keys.auto.c.33.o
- .data.MESSAGE_KEY_dummy
+ .data.MESSAGE_KEY_Habit0
+                0x0000000000000000        0x4 src/message_keys.auto.c.33.o
+ .data.MESSAGE_KEY_Habit1
+                0x0000000000000000        0x4 src/message_keys.auto.c.33.o
+ .data.MESSAGE_KEY_Habit2
+                0x0000000000000000        0x4 src/message_keys.auto.c.33.o
+ .data.MESSAGE_KEY_Habit3
+                0x0000000000000000        0x4 src/message_keys.auto.c.33.o
+ .data.MESSAGE_KEY_Habit4
+                0x0000000000000000        0x4 src/message_keys.auto.c.33.o
+ .data.MESSAGE_KEY_Habit5
+                0x0000000000000000        0x4 src/message_keys.auto.c.33.o
+ .data.MESSAGE_KEY_Habit6
+                0x0000000000000000        0x4 src/message_keys.auto.c.33.o
+ .data.MESSAGE_KEY_Habit7
+                0x0000000000000000        0x4 src/message_keys.auto.c.33.o
+ .data.MESSAGE_KEY_Habit8
+                0x0000000000000000        0x4 src/message_keys.auto.c.33.o
+ .data.MESSAGE_KEY_Habit9
                 0x0000000000000000        0x4 src/message_keys.auto.c.33.o
  .bss           0x0000000000000000        0x0 /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
  .text.accel_data_service_subscribe__deprecated
@@ -1191,7 +1220,7 @@ Linker script and memory map
 LOAD /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crti.o
 LOAD /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 LOAD src/c/main_window.c.33.o
-LOAD src/c/windows/clay_window.c.33.o
+LOAD src/c/windows/clay_settings.c.33.o
 LOAD src/c/windows/habit_list.c.33.o
 LOAD src/c/windows/icon_window.c.33.o
 LOAD src/c/windows/stats_window.c.33.o
@@ -1220,7 +1249,7 @@ LOAD /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/
  .note.gnu.build-id
                 0x0000000000000084       0x24 linker stubs
 
-.text           0x00000000000000a8      0xa09
+.text           0x00000000000000a8      0x9a3
  *(.text)
  .text          0x00000000000000a8       0x14 /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
  *(.text.*)
@@ -1412,100 +1441,103 @@ LOAD /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/
  .rodata.str1.1
                 0x0000000000000a0d       0x28 src/c/windows/habit_list.c.33.o
  .rodata.str1.1
-                0x0000000000000a35       0x7c src/c/windows/stats_window.c.33.o
-                                         0x7f (size before relaxing)
+                0x0000000000000a35       0x16 src/c/windows/stats_window.c.33.o
+                                         0x19 (size before relaxing)
 
-.glue_7         0x0000000000000ab4        0x0
+.glue_7         0x0000000000000a4c        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x0000000000000ab4        0x0
+.glue_7t        0x0000000000000a4c        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000000ab4        0x0
+.vfp11_veneer   0x0000000000000a4c        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x0000000000000ab4        0x0
+.v4_bx          0x0000000000000a4c        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x0000000000000ab4        0x0
+.iplt           0x0000000000000a4c        0x0
  .iplt          0x0000000000000000        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.rel.dyn        0x0000000000000ab4        0x0
+.rel.dyn        0x0000000000000a4c        0x0
  .rel.iplt      0x0000000000000000        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
  .rel.got       0x0000000000000000        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.data           0x0000000000000ab4        0x4
+.data           0x0000000000000a4c        0x4
  *(.data)
- .data          0x0000000000000ab4        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crti.o
- .data          0x0000000000000ab4        0x4 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
-                0x0000000000000ab4                __dso_handle
- .data          0x0000000000000ab8        0x0 src/c/main_window.c.33.o
- .data          0x0000000000000ab8        0x0 src/c/windows/clay_window.c.33.o
- .data          0x0000000000000ab8        0x0 src/c/windows/habit_list.c.33.o
- .data          0x0000000000000ab8        0x0 src/c/windows/icon_window.c.33.o
- .data          0x0000000000000ab8        0x0 src/c/windows/stats_window.c.33.o
- .data          0x0000000000000ab8        0x0 aplite/appinfo.auto.c.33.o
- .data          0x0000000000000ab8        0x0 aplite/src/resource_ids.auto.c.33.o
- .data          0x0000000000000ab8        0x0 src/message_keys.auto.c.33.o
- .data          0x0000000000000ab8        0x0 /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
- .data          0x0000000000000ab8        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
- .data          0x0000000000000ab8        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtn.o
+ .data          0x0000000000000a4c        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crti.o
+ .data          0x0000000000000a4c        0x4 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
+                0x0000000000000a4c                __dso_handle
+ .data          0x0000000000000a50        0x0 src/c/main_window.c.33.o
+ .data          0x0000000000000a50        0x0 src/c/windows/clay_settings.c.33.o
+ .data          0x0000000000000a50        0x0 src/c/windows/habit_list.c.33.o
+ .data          0x0000000000000a50        0x0 src/c/windows/icon_window.c.33.o
+ .data          0x0000000000000a50        0x0 src/c/windows/stats_window.c.33.o
+ .data          0x0000000000000a50        0x0 aplite/appinfo.auto.c.33.o
+ .data          0x0000000000000a50        0x0 aplite/src/resource_ids.auto.c.33.o
+ .data          0x0000000000000a50        0x0 src/message_keys.auto.c.33.o
+ .data          0x0000000000000a50        0x0 /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+ .data          0x0000000000000a50        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
+ .data          0x0000000000000a50        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtn.o
  *(.data.*)
 
-.igot.plt       0x0000000000000ab8        0x0
+.igot.plt       0x0000000000000a50        0x0
  .igot.plt      0x0000000000000000        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.got            0x0000000000000ab8       0x1c
- .got           0x0000000000000ab8       0x1c /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
+.got            0x0000000000000a50       0x1c
+ .got           0x0000000000000a50       0x1c /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.got.plt        0x0000000000000ad4        0xc
- .got.plt       0x0000000000000ad4        0xc /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
-                0x0000000000000ad4                _GLOBAL_OFFSET_TABLE_
+.got.plt        0x0000000000000a6c        0xc
+ .got.plt       0x0000000000000a6c        0xc /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
+                0x0000000000000a6c                _GLOBAL_OFFSET_TABLE_
 
-.bss            0x0000000000000ae0       0xac
+.bss            0x0000000000000a78       0xb8
  *(.bss)
  *(.bss.*)
  .bss.menu_layer
-                0x0000000000000ae0        0x4 src/c/main_window.c.33.o
- .bss.window    0x0000000000000ae4        0x4 src/c/main_window.c.33.o
+                0x0000000000000a78        0x4 src/c/main_window.c.33.o
+ .bss.window    0x0000000000000a7c        0x4 src/c/main_window.c.33.o
  .bss.white_unchecked_icon
-                0x0000000000000ae8        0x4 src/c/windows/habit_list.c.33.o
- .bss.habit_list_buff.7490
-                0x0000000000000aec       0x10 src/c/windows/habit_list.c.33.o
+                0x0000000000000a80        0x4 src/c/windows/habit_list.c.33.o
  .bss.s_selections
-                0x0000000000000afc        0x5 src/c/windows/habit_list.c.33.o
- *fill*         0x0000000000000b01        0x3 
+                0x0000000000000a84        0x5 src/c/windows/habit_list.c.33.o
+ *fill*         0x0000000000000a89        0x3 
  .bss.checked_icon
-                0x0000000000000b04        0x4 src/c/windows/habit_list.c.33.o
+                0x0000000000000a8c        0x4 src/c/windows/habit_list.c.33.o
  .bss.habit_window
-                0x0000000000000b08        0x4 src/c/windows/habit_list.c.33.o
+                0x0000000000000a90        0x4 src/c/windows/habit_list.c.33.o
+ .bss.habit_list_buff.7500
+                0x0000000000000a94       0x10 src/c/windows/habit_list.c.33.o
  .bss.unchecked_icon
-                0x0000000000000b0c        0x4 src/c/windows/habit_list.c.33.o
+                0x0000000000000aa4        0x4 src/c/windows/habit_list.c.33.o
  .bss.habit_menu_layer
-                0x0000000000000b10        0x4 src/c/windows/habit_list.c.33.o
+                0x0000000000000aa8        0x4 src/c/windows/habit_list.c.33.o
  .bss.white_checked_icon
-                0x0000000000000b14        0x4 src/c/windows/habit_list.c.33.o
- .bss.habit_buff.7493
-                0x0000000000000b18       0x10 src/c/windows/stats_window.c.33.o
- COMMON         0x0000000000000b28       0x28 src/c/windows/habit_list.c.33.o
-                0x0000000000000b28                habit_stats
- COMMON         0x0000000000000b50        0xc src/c/windows/icon_window.c.33.o
-                0x0000000000000b50                icon_bitmap
-                0x0000000000000b54                icon_window
-                0x0000000000000b58                icon_layer
- COMMON         0x0000000000000b5c       0x30 src/c/windows/stats_window.c.33.o
-                0x0000000000000b5c                habit_6
-                0x0000000000000b60                habit_5
-                0x0000000000000b64                habit_2
-                0x0000000000000b68                habit_9
-                0x0000000000000b6c                habit_3
-                0x0000000000000b70                habit_0
-                0x0000000000000b74                habit_8
-                0x0000000000000b78                stats_window
-                0x0000000000000b7c                stats_text
-                0x0000000000000b80                habit_4
-                0x0000000000000b84                habit_1
-                0x0000000000000b88                habit_7
+                0x0000000000000aac        0x4 src/c/windows/habit_list.c.33.o
+ .bss.habit_buff.7504
+                0x0000000000000ab0       0x10 src/c/windows/stats_window.c.33.o
+ .bss.title_0_buff.7501
+                0x0000000000000ac0        0xa src/c/windows/stats_window.c.33.o
+ *fill*         0x0000000000000aca        0x2 
+ COMMON         0x0000000000000acc       0x28 src/c/windows/habit_list.c.33.o
+                0x0000000000000acc                habit_stats
+ COMMON         0x0000000000000af4        0xc src/c/windows/icon_window.c.33.o
+                0x0000000000000af4                icon_bitmap
+                0x0000000000000af8                icon_window
+                0x0000000000000afc                icon_layer
+ COMMON         0x0000000000000b00       0x30 src/c/windows/stats_window.c.33.o
+                0x0000000000000b00                habit_6
+                0x0000000000000b04                habit_5
+                0x0000000000000b08                habit_2
+                0x0000000000000b0c                habit_9
+                0x0000000000000b10                habit_3
+                0x0000000000000b14                habit_0
+                0x0000000000000b18                habit_8
+                0x0000000000000b1c                stats_window
+                0x0000000000000b20                stats_text
+                0x0000000000000b24                habit_4
+                0x0000000000000b28                habit_1
+                0x0000000000000b2c                habit_7
 
 DISCARD
  libc.a(*)
@@ -1523,7 +1555,7 @@ OUTPUT(/home/rebble/code/pebble_habit_tracker/build/aplite/pebble-app.elf elf32-
  .ARM.attributes
                 0x0000000000000042       0x33 src/c/main_window.c.33.o
  .ARM.attributes
-                0x0000000000000075       0x33 src/c/windows/clay_window.c.33.o
+                0x0000000000000075       0x33 src/c/windows/clay_settings.c.33.o
  .ARM.attributes
                 0x00000000000000a8       0x33 src/c/windows/habit_list.c.33.o
  .ARM.attributes
@@ -1547,7 +1579,7 @@ OUTPUT(/home/rebble/code/pebble_habit_tracker/build/aplite/pebble-app.elf elf32-
  .comment       0x0000000000000000       0x4e /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
                                          0x4f (size before relaxing)
  .comment       0x0000000000000000       0x4f src/c/main_window.c.33.o
- .comment       0x0000000000000000       0x4f src/c/windows/clay_window.c.33.o
+ .comment       0x0000000000000000       0x4f src/c/windows/clay_settings.c.33.o
  .comment       0x0000000000000000       0x4f src/c/windows/habit_list.c.33.o
  .comment       0x0000000000000000       0x4f src/c/windows/icon_window.c.33.o
  .comment       0x0000000000000000       0x4f src/c/windows/stats_window.c.33.o
@@ -1556,88 +1588,89 @@ OUTPUT(/home/rebble/code/pebble_habit_tracker/build/aplite/pebble-app.elf elf32-
  .comment       0x0000000000000000       0x4f src/message_keys.auto.c.33.o
  .comment       0x0000000000000000       0x4f /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
 
-.debug_info     0x0000000000000000     0x2a79
+.debug_info     0x0000000000000000     0x38f5
  .debug_info    0x0000000000000000      0xa22 src/c/main_window.c.33.o
- .debug_info    0x0000000000000a22       0xc5 src/c/windows/clay_window.c.33.o
- .debug_info    0x0000000000000ae7      0xf61 src/c/windows/habit_list.c.33.o
- .debug_info    0x0000000000001a48      0x4b6 src/c/windows/icon_window.c.33.o
- .debug_info    0x0000000000001efe      0x717 src/c/windows/stats_window.c.33.o
- .debug_info    0x0000000000002615      0x31a aplite/appinfo.auto.c.33.o
- .debug_info    0x000000000000292f       0xc9 aplite/src/resource_ids.auto.c.33.o
- .debug_info    0x00000000000029f8       0x81 src/message_keys.auto.c.33.o
+ .debug_info    0x0000000000000a22      0xe7e src/c/windows/clay_settings.c.33.o
+ .debug_info    0x00000000000018a0      0xf61 src/c/windows/habit_list.c.33.o
+ .debug_info    0x0000000000002801      0x4b6 src/c/windows/icon_window.c.33.o
+ .debug_info    0x0000000000002cb7      0x738 src/c/windows/stats_window.c.33.o
+ .debug_info    0x00000000000033ef      0x31a aplite/appinfo.auto.c.33.o
+ .debug_info    0x0000000000003709       0xc9 aplite/src/resource_ids.auto.c.33.o
+ .debug_info    0x00000000000037d2      0x123 src/message_keys.auto.c.33.o
 
-.debug_abbrev   0x0000000000000000      0xb70
+.debug_abbrev   0x0000000000000000      0xdfc
  .debug_abbrev  0x0000000000000000      0x2a4 src/c/main_window.c.33.o
- .debug_abbrev  0x00000000000002a4       0x70 src/c/windows/clay_window.c.33.o
- .debug_abbrev  0x0000000000000314      0x358 src/c/windows/habit_list.c.33.o
- .debug_abbrev  0x000000000000066c      0x194 src/c/windows/icon_window.c.33.o
- .debug_abbrev  0x0000000000000800      0x24a src/c/windows/stats_window.c.33.o
- .debug_abbrev  0x0000000000000a4a       0x9e aplite/appinfo.auto.c.33.o
- .debug_abbrev  0x0000000000000ae8       0x44 aplite/src/resource_ids.auto.c.33.o
- .debug_abbrev  0x0000000000000b2c       0x44 src/message_keys.auto.c.33.o
+ .debug_abbrev  0x00000000000002a4      0x2fc src/c/windows/clay_settings.c.33.o
+ .debug_abbrev  0x00000000000005a0      0x358 src/c/windows/habit_list.c.33.o
+ .debug_abbrev  0x00000000000008f8      0x194 src/c/windows/icon_window.c.33.o
+ .debug_abbrev  0x0000000000000a8c      0x24a src/c/windows/stats_window.c.33.o
+ .debug_abbrev  0x0000000000000cd6       0x9e aplite/appinfo.auto.c.33.o
+ .debug_abbrev  0x0000000000000d74       0x44 aplite/src/resource_ids.auto.c.33.o
+ .debug_abbrev  0x0000000000000db8       0x44 src/message_keys.auto.c.33.o
 
-.debug_loc      0x0000000000000000      0x80e
+.debug_loc      0x0000000000000000      0xb8f
  .debug_loc     0x0000000000000000      0x310 src/c/main_window.c.33.o
- .debug_loc     0x0000000000000310      0x37d src/c/windows/habit_list.c.33.o
- .debug_loc     0x000000000000068d       0xab src/c/windows/icon_window.c.33.o
- .debug_loc     0x0000000000000738       0xd6 src/c/windows/stats_window.c.33.o
+ .debug_loc     0x0000000000000310      0x381 src/c/windows/clay_settings.c.33.o
+ .debug_loc     0x0000000000000691      0x37d src/c/windows/habit_list.c.33.o
+ .debug_loc     0x0000000000000a0e       0xab src/c/windows/icon_window.c.33.o
+ .debug_loc     0x0000000000000ab9       0xd6 src/c/windows/stats_window.c.33.o
 
-.debug_aranges  0x0000000000000000      0x178
+.debug_aranges  0x0000000000000000      0x1a0
  .debug_aranges
                 0x0000000000000000       0x58 src/c/main_window.c.33.o
  .debug_aranges
-                0x0000000000000058       0x20 src/c/windows/clay_window.c.33.o
+                0x0000000000000058       0x48 src/c/windows/clay_settings.c.33.o
  .debug_aranges
-                0x0000000000000078       0x58 src/c/windows/habit_list.c.33.o
+                0x00000000000000a0       0x58 src/c/windows/habit_list.c.33.o
  .debug_aranges
-                0x00000000000000d0       0x30 src/c/windows/icon_window.c.33.o
+                0x00000000000000f8       0x30 src/c/windows/icon_window.c.33.o
  .debug_aranges
-                0x0000000000000100       0x30 src/c/windows/stats_window.c.33.o
+                0x0000000000000128       0x30 src/c/windows/stats_window.c.33.o
  .debug_aranges
-                0x0000000000000130       0x18 aplite/appinfo.auto.c.33.o
+                0x0000000000000158       0x18 aplite/appinfo.auto.c.33.o
  .debug_aranges
-                0x0000000000000148       0x18 aplite/src/resource_ids.auto.c.33.o
+                0x0000000000000170       0x18 aplite/src/resource_ids.auto.c.33.o
  .debug_aranges
-                0x0000000000000160       0x18 src/message_keys.auto.c.33.o
+                0x0000000000000188       0x18 src/message_keys.auto.c.33.o
 
-.debug_ranges   0x0000000000000000      0x140
+.debug_ranges   0x0000000000000000      0x1c0
  .debug_ranges  0x0000000000000000       0x48 src/c/main_window.c.33.o
- .debug_ranges  0x0000000000000048       0x10 src/c/windows/clay_window.c.33.o
- .debug_ranges  0x0000000000000058       0xa8 src/c/windows/habit_list.c.33.o
- .debug_ranges  0x0000000000000100       0x20 src/c/windows/icon_window.c.33.o
- .debug_ranges  0x0000000000000120       0x20 src/c/windows/stats_window.c.33.o
+ .debug_ranges  0x0000000000000048       0x90 src/c/windows/clay_settings.c.33.o
+ .debug_ranges  0x00000000000000d8       0xa8 src/c/windows/habit_list.c.33.o
+ .debug_ranges  0x0000000000000180       0x20 src/c/windows/icon_window.c.33.o
+ .debug_ranges  0x00000000000001a0       0x20 src/c/windows/stats_window.c.33.o
 
-.debug_line     0x0000000000000000      0xb68
+.debug_line     0x0000000000000000      0xe47
  .debug_line    0x0000000000000000      0x220 src/c/main_window.c.33.o
- .debug_line    0x0000000000000220       0x51 src/c/windows/clay_window.c.33.o
- .debug_line    0x0000000000000271      0x2bc src/c/windows/habit_list.c.33.o
- .debug_line    0x000000000000052d      0x16f src/c/windows/icon_window.c.33.o
- .debug_line    0x000000000000069c      0x20e src/c/windows/stats_window.c.33.o
- .debug_line    0x00000000000008aa      0x125 aplite/appinfo.auto.c.33.o
- .debug_line    0x00000000000009cf       0xd0 aplite/src/resource_ids.auto.c.33.o
- .debug_line    0x0000000000000a9f       0xc9 src/message_keys.auto.c.33.o
+ .debug_line    0x0000000000000220      0x330 src/c/windows/clay_settings.c.33.o
+ .debug_line    0x0000000000000550      0x2bc src/c/windows/habit_list.c.33.o
+ .debug_line    0x000000000000080c      0x16f src/c/windows/icon_window.c.33.o
+ .debug_line    0x000000000000097b      0x20e src/c/windows/stats_window.c.33.o
+ .debug_line    0x0000000000000b89      0x125 aplite/appinfo.auto.c.33.o
+ .debug_line    0x0000000000000cae       0xd0 aplite/src/resource_ids.auto.c.33.o
+ .debug_line    0x0000000000000d7e       0xc9 src/message_keys.auto.c.33.o
 
-.debug_str      0x0000000000000000      0xd99
+.debug_str      0x0000000000000000     0x1350
  .debug_str     0x0000000000000000      0x527 src/c/main_window.c.33.o
                                         0x604 (size before relaxing)
- .debug_str     0x0000000000000527       0x35 src/c/windows/clay_window.c.33.o
-                                        0x106 (size before relaxing)
- .debug_str     0x000000000000055c      0x305 src/c/windows/habit_list.c.33.o
+ .debug_str     0x0000000000000527      0x637 src/c/windows/clay_settings.c.33.o
+                                        0x7b1 (size before relaxing)
+ .debug_str     0x0000000000000b5e      0x2bf src/c/windows/habit_list.c.33.o
                                         0x86c (size before relaxing)
- .debug_str     0x0000000000000861       0xca src/c/windows/icon_window.c.33.o
+ .debug_str     0x0000000000000e1d       0xca src/c/windows/icon_window.c.33.o
                                         0x2c7 (size before relaxing)
- .debug_str     0x000000000000092b      0x17f src/c/windows/stats_window.c.33.o
-                                        0x381 (size before relaxing)
- .debug_str     0x0000000000000aaa      0x22f aplite/appinfo.auto.c.33.o
+ .debug_str     0x0000000000000ee7      0x18c src/c/windows/stats_window.c.33.o
+                                        0x38e (size before relaxing)
+ .debug_str     0x0000000000001073      0x22f aplite/appinfo.auto.c.33.o
                                         0x31b (size before relaxing)
- .debug_str     0x0000000000000cd9       0x96 aplite/src/resource_ids.auto.c.33.o
+ .debug_str     0x00000000000012a2       0x96 aplite/src/resource_ids.auto.c.33.o
                                         0x15c (size before relaxing)
- .debug_str     0x0000000000000d6f       0x2a src/message_keys.auto.c.33.o
-                                         0xf0 (size before relaxing)
+ .debug_str     0x0000000000001338       0x18 src/message_keys.auto.c.33.o
+                                        0x19c (size before relaxing)
 
-.debug_frame    0x0000000000000000      0x2a4
+.debug_frame    0x0000000000000000      0x310
  .debug_frame   0x0000000000000000       0xc8 src/c/main_window.c.33.o
- .debug_frame   0x00000000000000c8       0x20 src/c/windows/clay_window.c.33.o
- .debug_frame   0x00000000000000e8       0xec src/c/windows/habit_list.c.33.o
- .debug_frame   0x00000000000001d4       0x68 src/c/windows/icon_window.c.33.o
- .debug_frame   0x000000000000023c       0x68 src/c/windows/stats_window.c.33.o
+ .debug_frame   0x00000000000000c8       0x8c src/c/windows/clay_settings.c.33.o
+ .debug_frame   0x0000000000000154       0xec src/c/windows/habit_list.c.33.o
+ .debug_frame   0x0000000000000240       0x68 src/c/windows/icon_window.c.33.o
+ .debug_frame   0x00000000000002a8       0x68 src/c/windows/stats_window.c.33.o

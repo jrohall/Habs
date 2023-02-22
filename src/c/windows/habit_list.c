@@ -1,4 +1,5 @@
 #include "habit_list.h"
+#include "clay_settings.h"
 
 static Window *habit_window;
 static MenuLayer *habit_menu_layer;

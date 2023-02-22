@@ -8,15 +8,35 @@
     "displayName": "pebble_habit_tracker", 
     "name": "pebble_habit_tracker", 
     "messageKeys": {
-        "dummy": 10000
+        "Habit0": 10000, 
+        "Habit1": 10001, 
+        "Habit2": 10002, 
+        "Habit3": 10003, 
+        "Habit4": 10004, 
+        "Habit5": 10005, 
+        "Habit6": 10006, 
+        "Habit7": 10007, 
+        "Habit8": 10008, 
+        "Habit9": 10009
     }, 
     "companyName": "jerroh", 
     "enableMultiJS": true, 
     "versionLabel": "1.0", 
-    "capabilities": [], 
+    "capabilities": [
+        "configurable"
+    ], 
     "sdkVersion": "3", 
     "appKeys": {
-        "dummy": 10000
+        "Habit0": 10000, 
+        "Habit1": 10001, 
+        "Habit2": 10002, 
+        "Habit3": 10003, 
+        "Habit4": 10004, 
+        "Habit5": 10005, 
+        "Habit6": 10006, 
+        "Habit7": 10007, 
+        "Habit8": 10008, 
+        "Habit9": 10009
     }, 
     "longName": "pebble_habit_tracker", 
     "shortName": "pebble_habit_tracker", 

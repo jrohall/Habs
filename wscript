@@ -4,10 +4,20 @@
 # Feel free to customize this to your needs.
 #
 import os.path
+import json
 
 top = '.'
 out = 'build'
 
+deps = ['pebble-clay']
+
+
+def update_package_json(ctx):
+    with open('package.json', 'r') as f:
+        package_json = json.load(f)
+    package_json['author'] = 'jerroh'
+    with open('package.json', 'w') as f:
+        json.dump(package_json, f, indent=2)
 
 def options(ctx):
     ctx.load('pebble_sdk')
@@ -25,6 +35,7 @@ def configure(ctx):
 
 def build(ctx):
     ctx.load('pebble_sdk')
+    update_package_json(ctx)
 
     #ctx.load('pebble-clay')
     #ctx.env.INCLUDES_CLAY.append(os.path.join(top, 'clay'))
@@ -53,6 +64,5 @@ def build(ctx):
     ctx.pbl_bundle(binaries=binaries,
                    js=ctx.path.ant_glob(['src/pkjs/**/*.js',
                                          'src/pkjs/**/*.json',
-                                         'src/common/**/*.js',
-					 'src/js/**/*.json']),
+                                         'src/common/**/*.js']),
                    js_entry_file='src/pkjs/index.js')
