@@ -11,7 +11,7 @@ out = 'build'
 
 def options(ctx):
     ctx.load('pebble_sdk')
-
+    #ctx.load('pebble-clay')
 
 def configure(ctx):
     """
@@ -21,12 +21,13 @@ def configure(ctx):
     Universal configuration: add your change prior to calling ctx.load('pebble_sdk').
     """
     ctx.load('pebble_sdk')
-
+    #ctx.load('pebble-clay')
 
 def build(ctx):
     ctx.load('pebble_sdk')
 
-    ctx.env.INCLUDES_CLAY.append(os.path.join(top, 'clay'))
+    #ctx.load('pebble-clay')
+    #ctx.env.INCLUDES_CLAY.append(os.path.join(top, 'clay'))
 
     build_worker = os.path.exists('worker_src')
     binaries = []

@@ -53,7 +53,7 @@ static void write_settings(){
 }
 
 // inbox received callback
-static void inbox_r(DictionaryIterator *i, void *context) {
+static void inbox_r(DictionaryIterator *iterator, void *context) {
 
 	// the parameter i would be the iterator in our code, so we could set temp like so:
 	/*
@@ -63,7 +63,7 @@ static void inbox_r(DictionaryIterator *i, void *context) {
 	} 
 	*/
 
-	Tuple *habit0_tuple = dict_find(i, MESSAGE_KEY_habit0);
+	Tuple *habit0_tuple = dict_find(iterator, MESSAGE_KEY_habit0);
 	if(habit0_tuple && total_elements < NUM_ELEMENTS){
 		snprintf(habits_clay_list[total_elements], MAX_STRING_LENGTH, "%s", habit0_tuple->value->cstring);
 		total_elements++;
