@@ -2,11 +2,24 @@
 #include "clay_settings.h"
 #include "habit_list.h"
 
+// window
 Window *stats_window;
 // labels
 TextLayer *layer0, *layer1, *layer2, *layer3, *layer4, *layer5, *layer6, *layer7, *layer8, *layer9;
 // stats
 TextLayer *habit_0, *habit_1, *habit_2, *habit_3, *habit_4, *habit_5, *habit_6, *habit_7, *habit_8, *habit_9;
+// lines
+Layer *canvas_layer;
+
+void canvas_draw(Layer *layer, GContext *ctx){
+  // drawing the lines :)
+  graphics_context_set_stroke_color(ctx, GColorBlack);
+  graphics_context_set_fill_color(ctx, GColorBlack);
+  graphics_context_set_stroke_width(ctx, 5);
+  GPoint start_1 = GPoint(0, 16);
+  GPoint end_1 = GPoint(148, 16);
+  graphics_draw_line(ctx, start_1, end_1);
+}
 
 void stats_window_load(Window *window){
   // unfortunately, I have to manage each habit individually...
@@ -23,6 +36,7 @@ void stats_window_load(Window *window){
 
   // grabbing the window layer to apply the text
 	Layer *window_layer = window_get_root_layer(window);
+  //GRect bounds = layer_get_bounds(window_layer);
 
   // settings x and y values, change_y and change_x will be how much the labels will change with respect to the original values
 	int label_x = 5;
@@ -185,7 +199,7 @@ void stats_window_load(Window *window){
 }
 
 void stats_window_unload(Window *window){
-	//Destroy TextLayer
+	// destroy TextLayer
 	text_layer_destroy(layer0);
   text_layer_destroy(layer1);
   text_layer_destroy(layer2);
@@ -206,6 +220,7 @@ void stats_window_unload(Window *window){
   text_layer_destroy(habit_7);
   text_layer_destroy(habit_8);
   text_layer_destroy(habit_9);
+
 }
  
 void stats_window_push() {
