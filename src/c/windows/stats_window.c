@@ -5,6 +5,7 @@
 // window
 Window *stats_window;
 // labels
+TextLayer *title1, *title2;
 TextLayer *layer0, *layer1, *layer2, *layer3, *layer4, *layer5, *layer6, *layer7, *layer8, *layer9;
 // stats
 TextLayer *habit_0, *habit_1, *habit_2, *habit_3, *habit_4, *habit_5, *habit_6, *habit_7, *habit_8, *habit_9;
@@ -45,12 +46,26 @@ void stats_window_load(Window *window){
   bitmap_layer_set_bitmap(graph_layer, graph_bitmap);
   layer_add_child(window_layer, bitmap_layer_get_layer(graph_layer));
 
+  // chart headings
+
+  title1 = text_layer_create(GRect(15, 1, 148, 166));
+  text_layer_set_text(title1, "Habits");
+  text_layer_set_text_color(title1, GColorBlack);
+  text_layer_set_background_color(title1, GColorClear);
+  layer_add_child(window_layer, text_layer_get_layer(title1));
+
+  title2 = text_layer_create(GRect(80, 1, 148, 166));
+  text_layer_set_text(title2, "Streaks");
+  text_layer_set_text_color(title2, GColorBlack);
+  text_layer_set_background_color(title2, GColorClear);
+  layer_add_child(window_layer, text_layer_get_layer(title2));
+
 
   // settings x and y values, change_y and change_x will be how much the labels will change with respect to the original values
-	int label_x = 5;
-  int label_y = 5;
+	int label_x = 15;
+  int label_y = 15;
   int change_y = 15;
-  int change_x = 45;
+  int change_x = 80;
 
   // loading in the stats from the habits page
   int *habit_stats = load_data();
@@ -228,6 +243,8 @@ void stats_window_unload(Window *window){
   text_layer_destroy(habit_7);
   text_layer_destroy(habit_8);
   text_layer_destroy(habit_9);
+  text_layer_destroy(title1);
+  text_layer_destroy(title2);
 
 }
  
