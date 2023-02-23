@@ -4,14 +4,9 @@
 #include "windows/habit_list.h"
 #include "windows/stats_window.h"
 #include "windows/clay_settings.h"
- 
 
 static Window *window;
 static MenuLayer *menu_layer;
-
-#define SETTINGS_KEY 1
-#define NUM_ELEMENTS 10
-#define MAX_STRING_LENGTH 10
 
 int total_elements = 0;
 
@@ -32,8 +27,19 @@ typedef struct ClaySettings {
     
 } ClaySettings;
 
-static ClaySettings settings;
-char habits_clay_list[NUM_ELEMENTS][MAX_STRING_LENGTH];
+ClaySettings settings;
+char habits_clay_list[NUM_ELEMENTS][MAX_STRING_LENGTH] = {
+    {""},
+    {""},
+    {""},
+    {""},
+    {""},
+    {""},
+    {""},
+    {""},
+    {""},
+    {""}
+};
 
 // set default settings values for each variable listed under settings
 static void default_settings(){
@@ -234,8 +240,6 @@ static void inbox_r(DictionaryIterator *iterator, void *context) {
         }
         total_elements++;
     }
-    APP_LOG(APP_LOG_LEVEL_INFO, "============%s", "BRUHHHHHH");
-
     
     //save all the settings recieved.
     write_settings();
@@ -324,6 +328,37 @@ void select_click_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *c
     
 }
 
+char * load_habit0(){
+    return settings.Habit0;
+}
+char * load_habit1(){
+    return settings.Habit1;
+}
+char * load_habit2(){
+    return settings.Habit2;
+}
+char * load_habit3(){
+    return settings.Habit3;
+}
+char * load_habit4(){
+    return settings.Habit4;
+}
+char * load_habit5(){
+    return settings.Habit5;
+}
+char * load_habit6(){
+    return settings.Habit6;
+}
+char * load_habit7(){
+    return settings.Habit7;
+}
+char * load_habit8(){
+    return settings.Habit8;
+}
+char * load_habit9(){
+    return settings.Habit9;
+}
+
 // now that these callbacks are in place, we can then add it to our main window, this will take multiple steps
 /*
 
@@ -365,14 +400,6 @@ void window_unload(Window *window)
  
 void init()
 {
-    window = window_create();
-    WindowHandlers handlers = {
-        .load = window_load,
-        .unload = window_unload
-    };
-    window_set_window_handlers(window, (WindowHandlers) handlers);
-    window_stack_push(window, true);
-
     // we want to load our settings first
     load_settings();
 
@@ -386,6 +413,15 @@ void init()
     const int inbox_size = 128;
     const int outbox_size = 128;
     app_message_open(inbox_size, outbox_size);
+
+    window = window_create();
+    WindowHandlers handlers = {
+        .load = window_load,
+        .unload = window_unload
+    };
+    window_set_window_handlers(window, (WindowHandlers) handlers);
+    window_stack_push(window, true);
+
 }
  
 void deinit()

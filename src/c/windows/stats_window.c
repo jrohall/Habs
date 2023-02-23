@@ -8,7 +8,19 @@ TextLayer *stats_text;
 TextLayer *habit_0, *habit_1, *habit_2, *habit_3, *habit_4, *habit_5, *habit_6, *habit_7, *habit_8, *habit_9;
 
 void stats_window_load(Window *window){
-  //load_clay();
+  // unfortunately, I have to manage each habit individually...
+  char *habit0_label = load_habit0();
+  char *habit1_label = load_habit1();
+  char *habit2_label = load_habit2();
+  char *habit3_label = load_habit3();
+  char *habit4_label = load_habit4();
+  char *habit5_label = load_habit5();
+  char *habit6_label = load_habit6();
+  char *habit7_label = load_habit7();
+  char *habit8_label = load_habit8();
+  char *habit9_label = load_habit9();
+  //char habArr[NUM_ELEMENTS][MAX_STRING_LENGTH] = {habit0_label, habit1_label, habit2_label, habit3_label, habit4_label, habit5_label, habit6_label, habit7_label, habit8_label, habit9_label};
+
 	Layer *window_layer = window_get_root_layer(window);
 
 	int label_x = 5;
@@ -20,7 +32,7 @@ void stats_window_load(Window *window){
   //  strcat(habits_labels, habits_clay_list[i]);
   //  strcat(habits_labels, "\n");
   //}
-  text_layer_set_text(stats_text, "BRUHHHHHH");
+  text_layer_set_text(stats_text, habit0_label);
   text_layer_set_text_color(stats_text, GColorBlack);
   text_layer_set_background_color(stats_text, GColorClear);
   //text_layer_set_text_alignment(stats_text, GTextAlignmentCenter);
