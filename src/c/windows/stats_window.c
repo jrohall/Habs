@@ -9,7 +9,8 @@ TextLayer *layer0, *layer1, *layer2, *layer3, *layer4, *layer5, *layer6, *layer7
 // stats
 TextLayer *habit_0, *habit_1, *habit_2, *habit_3, *habit_4, *habit_5, *habit_6, *habit_7, *habit_8, *habit_9;
 // lines
-Layer *canvas_layer;
+GBitmap *graph_bitmap;
+BitmapLayer *graph_layer;
 
 void canvas_draw(Layer *layer, GContext *ctx){
   // drawing the lines :)
@@ -36,7 +37,14 @@ void stats_window_load(Window *window){
 
   // grabbing the window layer to apply the text
 	Layer *window_layer = window_get_root_layer(window);
-  //GRect bounds = layer_get_bounds(window_layer);
+  GRect bounds = layer_get_bounds(window_layer);
+
+  // setting the lines
+  graph_bitmap = gbitmap_create_with_resource(RESOURCE_ID_GRAPH);
+  graph_layer = bitmap_layer_create(bounds);
+  bitmap_layer_set_bitmap(graph_layer, graph_bitmap);
+  layer_add_child(window_layer, bitmap_layer_get_layer(graph_layer));
+
 
   // settings x and y values, change_y and change_x will be how much the labels will change with respect to the original values
 	int label_x = 5;

@@ -7,7 +7,7 @@ BitmapLayer *icon_layer;
 void icon_window_load(Window *window){
 	//Load bitmaps into GBitmap structures
 	//The ID you chose when uploading is prefixed with 'RESOURCE_ID_'
-	icon_bitmap = gbitmap_create_with_resource(RESOURCE_ID_CHALK_ICON);
+	icon_bitmap = gbitmap_create_with_resource(RESOURCE_ID_GRAPH);
 	 
 	//Create BitmapLayers to show GBitmaps and add to Window
 	//Sample images are 127 x 129 pixels

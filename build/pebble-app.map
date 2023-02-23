@@ -16,6 +16,7 @@ layer4              0x4               src/c/windows/stats_window.c.33.o
 settings            0x64              src/c/main_window.c.33.o
 icon_bitmap         0x4               src/c/windows/icon_window.c.33.o
 habit_9             0x4               src/c/windows/stats_window.c.33.o
+graph_layer         0x4               src/c/windows/stats_window.c.33.o
 layer9              0x4               src/c/windows/stats_window.c.33.o
 habit_3             0x4               src/c/windows/stats_window.c.33.o
 icon_window         0x4               src/c/windows/icon_window.c.33.o
@@ -23,6 +24,7 @@ habit_0             0x4               src/c/windows/stats_window.c.33.o
 layer3              0x4               src/c/windows/stats_window.c.33.o
 habit_8             0x4               src/c/windows/stats_window.c.33.o
 layer5              0x4               src/c/windows/stats_window.c.33.o
+graph_bitmap        0x4               src/c/windows/stats_window.c.33.o
 stats_window        0x4               src/c/windows/stats_window.c.33.o
 habit_4             0x4               src/c/windows/stats_window.c.33.o
 icon_layer          0x4               src/c/windows/icon_window.c.33.o
@@ -55,11 +57,16 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 src/c/windows/icon_window.c.33.o
  .text          0x0000000000000000        0x0 src/c/windows/stats_window.c.33.o
  .bss           0x0000000000000000        0x0 src/c/windows/stats_window.c.33.o
+ .text.canvas_draw
+                0x0000000000000000       0x44 src/c/windows/stats_window.c.33.o
+ .rodata        0x0000000000000000        0x4 src/c/windows/stats_window.c.33.o
  .text          0x0000000000000000        0x0 aplite/appinfo.auto.c.33.o
  .bss           0x0000000000000000        0x0 aplite/appinfo.auto.c.33.o
  .text          0x0000000000000000        0x0 aplite/src/resource_ids.auto.c.33.o
  .bss           0x0000000000000000        0x0 aplite/src/resource_ids.auto.c.33.o
  .data.RESOURCE_ID_UNCHECKED
+                0x0000000000000000        0x4 aplite/src/resource_ids.auto.c.33.o
+ .data.RESOURCE_ID_WHITE_CHECKED
                 0x0000000000000000        0x4 aplite/src/resource_ids.auto.c.33.o
  .data.RESOURCE_ID_WHITE_UNCHECKED
                 0x0000000000000000        0x4 aplite/src/resource_ids.auto.c.33.o
@@ -67,7 +74,7 @@ Discarded input sections
                 0x0000000000000000        0x4 aplite/src/resource_ids.auto.c.33.o
  .data.RESOURCE_ID_CHALK_ICON
                 0x0000000000000000        0x4 aplite/src/resource_ids.auto.c.33.o
- .data.RESOURCE_ID_WHITE_CHECKED
+ .data.RESOURCE_ID_GRAPH
                 0x0000000000000000        0x4 aplite/src/resource_ids.auto.c.33.o
  .text          0x0000000000000000        0x0 src/message_keys.auto.c.33.o
  .bss           0x0000000000000000        0x0 src/message_keys.auto.c.33.o
@@ -1204,7 +1211,7 @@ LOAD /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/
  .note.gnu.build-id
                 0x0000000000000084       0x24 linker stubs
 
-.text           0x00000000000000a8     0x1a80
+.text           0x00000000000000a8     0x1ac4
  *(.text)
  .text          0x00000000000000a8       0x14 /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
  *(.text.*)
@@ -1307,319 +1314,321 @@ LOAD /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/
                 0x0000000000000d28      0x128 src/c/windows/stats_window.c.33.o
                 0x0000000000000d28                stats_window_unload
  .text.stats_window_load
-                0x0000000000000e50      0x8e8 src/c/windows/stats_window.c.33.o
+                0x0000000000000e50      0x92c src/c/windows/stats_window.c.33.o
                 0x0000000000000e50                stats_window_load
  .text.stats_window_push
-                0x0000000000001738       0x58 src/c/windows/stats_window.c.33.o
-                0x0000000000001738                stats_window_push
+                0x000000000000177c       0x58 src/c/windows/stats_window.c.33.o
+                0x000000000000177c                stats_window_push
  .text.app_event_loop
-                0x0000000000001790        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001790                app_event_loop
- .text.app_log  0x000000000000179c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x000000000000179c                app_log
+                0x00000000000017d4        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000017d4                app_event_loop
+ .text.app_log  0x00000000000017e0        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000017e0                app_log
  .text.app_message_open
-                0x00000000000017a8        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000017a8                app_message_open
+                0x00000000000017ec        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000017ec                app_message_open
  .text.bitmap_layer_create
-                0x00000000000017b4        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000017b4                bitmap_layer_create
+                0x00000000000017f8        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000017f8                bitmap_layer_create
  .text.bitmap_layer_destroy
-                0x00000000000017c0        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000017c0                bitmap_layer_destroy
+                0x0000000000001804        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001804                bitmap_layer_destroy
  .text.bitmap_layer_get_layer
-                0x00000000000017cc        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000017cc                bitmap_layer_get_layer
+                0x0000000000001810        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001810                bitmap_layer_get_layer
  .text.bitmap_layer_set_bitmap
-                0x00000000000017d8        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000017d8                bitmap_layer_set_bitmap
+                0x000000000000181c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x000000000000181c                bitmap_layer_set_bitmap
  .text.dict_find
-                0x00000000000017e4        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000017e4                dict_find
+                0x0000000000001828        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001828                dict_find
  .text.fonts_get_system_font
-                0x00000000000017f0        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000017f0                fonts_get_system_font
+                0x0000000000001834        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001834                fonts_get_system_font
  .text.gbitmap_create_with_resource
-                0x00000000000017fc        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000017fc                gbitmap_create_with_resource
+                0x0000000000001840        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001840                gbitmap_create_with_resource
  .text.gbitmap_destroy
-                0x0000000000001808        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001808                gbitmap_destroy
+                0x000000000000184c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x000000000000184c                gbitmap_destroy
  .text.graphics_context_set_compositing_mode
-                0x0000000000001814        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001814                graphics_context_set_compositing_mode
+                0x0000000000001858        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001858                graphics_context_set_compositing_mode
  .text.graphics_draw_bitmap_in_rect
-                0x0000000000001820        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001820                graphics_draw_bitmap_in_rect
+                0x0000000000001864        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001864                graphics_draw_bitmap_in_rect
  .text.layer_add_child
-                0x000000000000182c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x000000000000182c                layer_add_child
+                0x0000000000001870        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001870                layer_add_child
  .text.layer_get_bounds
-                0x0000000000001838        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001838                layer_get_bounds
- .text.memset   0x0000000000001844        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001844                memset
+                0x000000000000187c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x000000000000187c                layer_get_bounds
+ .text.memset   0x0000000000001888        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001888                memset
  .text.menu_cell_basic_draw
-                0x0000000000001850        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001850                menu_cell_basic_draw
+                0x0000000000001894        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001894                menu_cell_basic_draw
  .text.menu_layer_destroy
-                0x000000000000185c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x000000000000185c                menu_layer_destroy
+                0x00000000000018a0        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000018a0                menu_layer_destroy
  .text.menu_layer_get_layer
-                0x0000000000001868        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001868                menu_layer_get_layer
+                0x00000000000018ac        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000018ac                menu_layer_get_layer
  .text.menu_layer_set_click_config_onto_window
-                0x0000000000001874        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001874                menu_layer_set_click_config_onto_window
+                0x00000000000018b8        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000018b8                menu_layer_set_click_config_onto_window
  .text.snprintf
-                0x0000000000001880        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001880                snprintf
- .text.strcpy   0x000000000000188c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x000000000000188c                strcpy
- .text.strlen   0x0000000000001898        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001898                strlen
+                0x00000000000018c4        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000018c4                snprintf
+ .text.strcpy   0x00000000000018d0        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000018d0                strcpy
+ .text.strlen   0x00000000000018dc        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000018dc                strlen
  .text.vibes_enqueue_custom_pattern
-                0x00000000000018a4        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000018a4                vibes_enqueue_custom_pattern
+                0x00000000000018e8        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000018e8                vibes_enqueue_custom_pattern
  .text.window_create
-                0x00000000000018b0        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000018b0                window_create
+                0x00000000000018f4        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000018f4                window_create
  .text.window_destroy
-                0x00000000000018bc        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000018bc                window_destroy
+                0x0000000000001900        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001900                window_destroy
  .text.window_get_root_layer
-                0x00000000000018c8        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000018c8                window_get_root_layer
+                0x000000000000190c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x000000000000190c                window_get_root_layer
  .text.window_set_window_handlers
-                0x00000000000018d4        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000018d4                window_set_window_handlers
+                0x0000000000001918        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001918                window_set_window_handlers
  .text.window_stack_pop
-                0x00000000000018e0        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000018e0                window_stack_pop
+                0x0000000000001924        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001924                window_stack_pop
  .text.window_stack_push
-                0x00000000000018ec        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000018ec                window_stack_push
+                0x0000000000001930        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001930                window_stack_push
  .text.app_message_register_inbox_dropped
-                0x00000000000018f8        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000018f8                app_message_register_inbox_dropped
+                0x000000000000193c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x000000000000193c                app_message_register_inbox_dropped
  .text.app_message_register_inbox_received
-                0x0000000000001904        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001904                app_message_register_inbox_received
+                0x0000000000001948        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001948                app_message_register_inbox_received
  .text.app_message_register_outbox_failed
-                0x0000000000001910        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001910                app_message_register_outbox_failed
+                0x0000000000001954        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001954                app_message_register_outbox_failed
  .text.app_message_register_outbox_sent
-                0x000000000000191c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x000000000000191c                app_message_register_outbox_sent
+                0x0000000000001960        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001960                app_message_register_outbox_sent
  .text.persist_read_data
-                0x0000000000001928        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001928                persist_read_data
+                0x000000000000196c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x000000000000196c                persist_read_data
  .text.persist_write_data
-                0x0000000000001934        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001934                persist_write_data
+                0x0000000000001978        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001978                persist_write_data
  .text.graphics_context_set_stroke_color
-                0x0000000000001940        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001940                graphics_context_set_stroke_color
+                0x0000000000001984        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001984                graphics_context_set_stroke_color
  .text.gbitmap_get_bounds
-                0x000000000000194c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x000000000000194c                gbitmap_get_bounds
+                0x0000000000001990        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001990                gbitmap_get_bounds
  .text.menu_layer_create
-                0x0000000000001958        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001958                menu_layer_create
+                0x000000000000199c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x000000000000199c                menu_layer_create
  .text.menu_cell_layer_is_highlighted
-                0x0000000000001964        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001964                menu_cell_layer_is_highlighted
+                0x00000000000019a8        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000019a8                menu_cell_layer_is_highlighted
  .text.text_layer_create
-                0x0000000000001970        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001970                text_layer_create
+                0x00000000000019b4        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000019b4                text_layer_create
  .text.text_layer_destroy
-                0x000000000000197c        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x000000000000197c                text_layer_destroy
+                0x00000000000019c0        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000019c0                text_layer_destroy
  .text.text_layer_get_layer
-                0x0000000000001988        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001988                text_layer_get_layer
+                0x00000000000019cc        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000019cc                text_layer_get_layer
  .text.text_layer_set_background_color
-                0x0000000000001994        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x0000000000001994                text_layer_set_background_color
+                0x00000000000019d8        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000019d8                text_layer_set_background_color
  .text.text_layer_set_font
-                0x00000000000019a0        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000019a0                text_layer_set_font
+                0x00000000000019e4        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000019e4                text_layer_set_font
  .text.text_layer_set_text
-                0x00000000000019ac        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000019ac                text_layer_set_text
+                0x00000000000019f0        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000019f0                text_layer_set_text
  .text.text_layer_set_text_color
-                0x00000000000019b8        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000019b8                text_layer_set_text_color
+                0x00000000000019fc        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x00000000000019fc                text_layer_set_text_color
  .text.menu_layer_set_callbacks
-                0x00000000000019c4        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
-                0x00000000000019c4                menu_layer_set_callbacks
+                0x0000000000001a08        0xc /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+                0x0000000000001a08                menu_layer_set_callbacks
  *(.rodata)
- .rodata        0x00000000000019d0        0x8 src/c/main_window.c.33.o
- .rodata        0x00000000000019d8        0x8 src/c/windows/habit_list.c.33.o
- .rodata        0x00000000000019e0        0x8 src/c/windows/icon_window.c.33.o
+ .rodata        0x0000000000001a14        0x8 src/c/main_window.c.33.o
+ .rodata        0x0000000000001a1c        0x8 src/c/windows/habit_list.c.33.o
+ .rodata        0x0000000000001a24        0x8 src/c/windows/icon_window.c.33.o
  *(.rodata*)
  .rodata.str1.1
-                0x00000000000019e8       0xe4 src/c/main_window.c.33.o
+                0x0000000000001a2c       0xe4 src/c/main_window.c.33.o
  .rodata.str1.1
-                0x0000000000001acc       0x46 src/c/windows/habit_list.c.33.o
+                0x0000000000001b10       0x46 src/c/windows/habit_list.c.33.o
  .rodata.str1.1
-                0x0000000000001b12       0x16 src/c/windows/stats_window.c.33.o
+                0x0000000000001b56       0x16 src/c/windows/stats_window.c.33.o
                                          0x19 (size before relaxing)
 
-.glue_7         0x0000000000001b28        0x0
+.glue_7         0x0000000000001b6c        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x0000000000001b28        0x0
+.glue_7t        0x0000000000001b6c        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000001b28        0x0
+.vfp11_veneer   0x0000000000001b6c        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x0000000000001b28        0x0
+.v4_bx          0x0000000000001b6c        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x0000000000001b28        0x0
+.iplt           0x0000000000001b6c        0x0
  .iplt          0x0000000000000000        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.rel.dyn        0x0000000000001b28        0x0
+.rel.dyn        0x0000000000001b6c        0x0
  .rel.iplt      0x0000000000000000        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
  .rel.got       0x0000000000000000        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.data           0x0000000000001b28       0x2c
+.data           0x0000000000001b6c       0x2c
  *(.data)
- .data          0x0000000000001b28        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crti.o
- .data          0x0000000000001b28        0x4 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
-                0x0000000000001b28                __dso_handle
- .data          0x0000000000001b2c        0x0 src/c/main_window.c.33.o
- .data          0x0000000000001b2c        0x0 src/c/windows/habit_list.c.33.o
- .data          0x0000000000001b2c        0x0 src/c/windows/icon_window.c.33.o
- .data          0x0000000000001b2c        0x0 src/c/windows/stats_window.c.33.o
- .data          0x0000000000001b2c        0x0 aplite/appinfo.auto.c.33.o
- .data          0x0000000000001b2c        0x0 aplite/src/resource_ids.auto.c.33.o
- .data          0x0000000000001b2c        0x0 src/message_keys.auto.c.33.o
- .data          0x0000000000001b2c        0x0 /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
- .data          0x0000000000001b2c        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
- .data          0x0000000000001b2c        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtn.o
+ .data          0x0000000000001b6c        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crti.o
+ .data          0x0000000000001b6c        0x4 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
+                0x0000000000001b6c                __dso_handle
+ .data          0x0000000000001b70        0x0 src/c/main_window.c.33.o
+ .data          0x0000000000001b70        0x0 src/c/windows/habit_list.c.33.o
+ .data          0x0000000000001b70        0x0 src/c/windows/icon_window.c.33.o
+ .data          0x0000000000001b70        0x0 src/c/windows/stats_window.c.33.o
+ .data          0x0000000000001b70        0x0 aplite/appinfo.auto.c.33.o
+ .data          0x0000000000001b70        0x0 aplite/src/resource_ids.auto.c.33.o
+ .data          0x0000000000001b70        0x0 src/message_keys.auto.c.33.o
+ .data          0x0000000000001b70        0x0 /home/rebble/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
+ .data          0x0000000000001b70        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
+ .data          0x0000000000001b70        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtn.o
  *(.data.*)
  .data.MESSAGE_KEY_Habit0
-                0x0000000000001b2c        0x4 src/message_keys.auto.c.33.o
-                0x0000000000001b2c                MESSAGE_KEY_Habit0
+                0x0000000000001b70        0x4 src/message_keys.auto.c.33.o
+                0x0000000000001b70                MESSAGE_KEY_Habit0
  .data.MESSAGE_KEY_Habit1
-                0x0000000000001b30        0x4 src/message_keys.auto.c.33.o
-                0x0000000000001b30                MESSAGE_KEY_Habit1
+                0x0000000000001b74        0x4 src/message_keys.auto.c.33.o
+                0x0000000000001b74                MESSAGE_KEY_Habit1
  .data.MESSAGE_KEY_Habit2
-                0x0000000000001b34        0x4 src/message_keys.auto.c.33.o
-                0x0000000000001b34                MESSAGE_KEY_Habit2
+                0x0000000000001b78        0x4 src/message_keys.auto.c.33.o
+                0x0000000000001b78                MESSAGE_KEY_Habit2
  .data.MESSAGE_KEY_Habit3
-                0x0000000000001b38        0x4 src/message_keys.auto.c.33.o
-                0x0000000000001b38                MESSAGE_KEY_Habit3
+                0x0000000000001b7c        0x4 src/message_keys.auto.c.33.o
+                0x0000000000001b7c                MESSAGE_KEY_Habit3
  .data.MESSAGE_KEY_Habit4
-                0x0000000000001b3c        0x4 src/message_keys.auto.c.33.o
-                0x0000000000001b3c                MESSAGE_KEY_Habit4
+                0x0000000000001b80        0x4 src/message_keys.auto.c.33.o
+                0x0000000000001b80                MESSAGE_KEY_Habit4
  .data.MESSAGE_KEY_Habit5
-                0x0000000000001b40        0x4 src/message_keys.auto.c.33.o
-                0x0000000000001b40                MESSAGE_KEY_Habit5
+                0x0000000000001b84        0x4 src/message_keys.auto.c.33.o
+                0x0000000000001b84                MESSAGE_KEY_Habit5
  .data.MESSAGE_KEY_Habit6
-                0x0000000000001b44        0x4 src/message_keys.auto.c.33.o
-                0x0000000000001b44                MESSAGE_KEY_Habit6
+                0x0000000000001b88        0x4 src/message_keys.auto.c.33.o
+                0x0000000000001b88                MESSAGE_KEY_Habit6
  .data.MESSAGE_KEY_Habit7
-                0x0000000000001b48        0x4 src/message_keys.auto.c.33.o
-                0x0000000000001b48                MESSAGE_KEY_Habit7
+                0x0000000000001b8c        0x4 src/message_keys.auto.c.33.o
+                0x0000000000001b8c                MESSAGE_KEY_Habit7
  .data.MESSAGE_KEY_Habit8
-                0x0000000000001b4c        0x4 src/message_keys.auto.c.33.o
-                0x0000000000001b4c                MESSAGE_KEY_Habit8
+                0x0000000000001b90        0x4 src/message_keys.auto.c.33.o
+                0x0000000000001b90                MESSAGE_KEY_Habit8
  .data.MESSAGE_KEY_Habit9
-                0x0000000000001b50        0x4 src/message_keys.auto.c.33.o
-                0x0000000000001b50                MESSAGE_KEY_Habit9
+                0x0000000000001b94        0x4 src/message_keys.auto.c.33.o
+                0x0000000000001b94                MESSAGE_KEY_Habit9
 
-.igot.plt       0x0000000000001b54        0x0
+.igot.plt       0x0000000000001b98        0x0
  .igot.plt      0x0000000000000000        0x0 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.got            0x0000000000001b54       0x90
- .got           0x0000000000001b54       0x90 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
+.got            0x0000000000001b98       0x98
+ .got           0x0000000000001b98       0x98 /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.got.plt        0x0000000000001be4        0xc
- .got.plt       0x0000000000001be4        0xc /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
-                0x0000000000001be4                _GLOBAL_OFFSET_TABLE_
+.got.plt        0x0000000000001c30        0xc
+ .got.plt       0x0000000000001c30        0xc /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
+                0x0000000000001c30                _GLOBAL_OFFSET_TABLE_
 
-.bss            0x0000000000001bf0      0x22c
+.bss            0x0000000000001c3c      0x234
  *(.bss)
  *(.bss.*)
  .bss.menu_layer
-                0x0000000000001bf0        0x4 src/c/main_window.c.33.o
+                0x0000000000001c3c        0x4 src/c/main_window.c.33.o
  .bss.total_elements
-                0x0000000000001bf4        0x4 src/c/main_window.c.33.o
-                0x0000000000001bf4                total_elements
+                0x0000000000001c40        0x4 src/c/main_window.c.33.o
+                0x0000000000001c40                total_elements
  .bss.habits_clay_list
-                0x0000000000001bf8       0x64 src/c/main_window.c.33.o
-                0x0000000000001bf8                habits_clay_list
- .bss.window    0x0000000000001c5c        0x4 src/c/main_window.c.33.o
+                0x0000000000001c44       0x64 src/c/main_window.c.33.o
+                0x0000000000001c44                habits_clay_list
+ .bss.window    0x0000000000001ca8        0x4 src/c/main_window.c.33.o
  .bss.white_unchecked_icon
-                0x0000000000001c60        0x4 src/c/windows/habit_list.c.33.o
+                0x0000000000001cac        0x4 src/c/windows/habit_list.c.33.o
  .bss.s_selections
-                0x0000000000001c64        0x5 src/c/windows/habit_list.c.33.o
- *fill*         0x0000000000001c69        0x3 
+                0x0000000000001cb0        0x5 src/c/windows/habit_list.c.33.o
+ *fill*         0x0000000000001cb5        0x3 
  .bss.checked_icon
-                0x0000000000001c6c        0x4 src/c/windows/habit_list.c.33.o
+                0x0000000000001cb8        0x4 src/c/windows/habit_list.c.33.o
  .bss.habit_window
-                0x0000000000001c70        0x4 src/c/windows/habit_list.c.33.o
+                0x0000000000001cbc        0x4 src/c/windows/habit_list.c.33.o
  .bss.habit_list_buff.7510
-                0x0000000000001c74       0x10 src/c/windows/habit_list.c.33.o
+                0x0000000000001cc0       0x10 src/c/windows/habit_list.c.33.o
  .bss.unchecked_icon
-                0x0000000000001c84        0x4 src/c/windows/habit_list.c.33.o
+                0x0000000000001cd0        0x4 src/c/windows/habit_list.c.33.o
  .bss.habit_menu_layer
-                0x0000000000001c88        0x4 src/c/windows/habit_list.c.33.o
+                0x0000000000001cd4        0x4 src/c/windows/habit_list.c.33.o
  .bss.white_checked_icon
-                0x0000000000001c8c        0x4 src/c/windows/habit_list.c.33.o
- .bss.habit_buff3.7554
-                0x0000000000001c90       0x10 src/c/windows/stats_window.c.33.o
- .bss.habit_buff7.7578
-                0x0000000000001ca0       0x10 src/c/windows/stats_window.c.33.o
- .bss.habit_buff9.7590
-                0x0000000000001cb0       0x10 src/c/windows/stats_window.c.33.o
- .bss.habit_buff1.7542
-                0x0000000000001cc0       0x10 src/c/windows/stats_window.c.33.o
- .bss.habit_buff8.7584
-                0x0000000000001cd0       0x10 src/c/windows/stats_window.c.33.o
- .bss.habit_buff0.7536
-                0x0000000000001ce0       0x10 src/c/windows/stats_window.c.33.o
- .bss.habit_buff5.7566
-                0x0000000000001cf0       0x10 src/c/windows/stats_window.c.33.o
- .bss.habit_buff6.7572
-                0x0000000000001d00       0x10 src/c/windows/stats_window.c.33.o
- .bss.habit_buff4.7560
-                0x0000000000001d10       0x10 src/c/windows/stats_window.c.33.o
- .bss.habit_buff2.7548
-                0x0000000000001d20       0x10 src/c/windows/stats_window.c.33.o
- COMMON         0x0000000000001d30       0x64 src/c/main_window.c.33.o
-                0x0000000000001d30                settings
- COMMON         0x0000000000001d94       0x28 src/c/windows/habit_list.c.33.o
-                0x0000000000001d94                habit_stats
- COMMON         0x0000000000001dbc        0xc src/c/windows/icon_window.c.33.o
-                0x0000000000001dbc                icon_bitmap
-                0x0000000000001dc0                icon_window
-                0x0000000000001dc4                icon_layer
- COMMON         0x0000000000001dc8       0x54 src/c/windows/stats_window.c.33.o
-                0x0000000000001dc8                habit_6
-                0x0000000000001dcc                layer7
-                0x0000000000001dd0                habit_5
-                0x0000000000001dd4                habit_2
-                0x0000000000001dd8                layer1
-                0x0000000000001ddc                layer4
-                0x0000000000001de0                habit_9
-                0x0000000000001de4                layer9
-                0x0000000000001de8                habit_3
-                0x0000000000001dec                habit_0
-                0x0000000000001df0                layer3
-                0x0000000000001df4                habit_8
-                0x0000000000001df8                layer5
-                0x0000000000001dfc                stats_window
-                0x0000000000001e00                habit_4
-                0x0000000000001e04                layer6
-                0x0000000000001e08                layer8
-                0x0000000000001e0c                layer0
-                0x0000000000001e10                layer2
-                0x0000000000001e14                habit_1
-                0x0000000000001e18                habit_7
+                0x0000000000001cd8        0x4 src/c/windows/habit_list.c.33.o
+ .bss.habit_buff5.7579
+                0x0000000000001cdc       0x10 src/c/windows/stats_window.c.33.o
+ .bss.habit_buff2.7561
+                0x0000000000001cec       0x10 src/c/windows/stats_window.c.33.o
+ .bss.habit_buff3.7567
+                0x0000000000001cfc       0x10 src/c/windows/stats_window.c.33.o
+ .bss.habit_buff8.7597
+                0x0000000000001d0c       0x10 src/c/windows/stats_window.c.33.o
+ .bss.habit_buff9.7603
+                0x0000000000001d1c       0x10 src/c/windows/stats_window.c.33.o
+ .bss.habit_buff7.7591
+                0x0000000000001d2c       0x10 src/c/windows/stats_window.c.33.o
+ .bss.habit_buff0.7549
+                0x0000000000001d3c       0x10 src/c/windows/stats_window.c.33.o
+ .bss.habit_buff1.7555
+                0x0000000000001d4c       0x10 src/c/windows/stats_window.c.33.o
+ .bss.habit_buff4.7573
+                0x0000000000001d5c       0x10 src/c/windows/stats_window.c.33.o
+ .bss.habit_buff6.7585
+                0x0000000000001d6c       0x10 src/c/windows/stats_window.c.33.o
+ COMMON         0x0000000000001d7c       0x64 src/c/main_window.c.33.o
+                0x0000000000001d7c                settings
+ COMMON         0x0000000000001de0       0x28 src/c/windows/habit_list.c.33.o
+                0x0000000000001de0                habit_stats
+ COMMON         0x0000000000001e08        0xc src/c/windows/icon_window.c.33.o
+                0x0000000000001e08                icon_bitmap
+                0x0000000000001e0c                icon_window
+                0x0000000000001e10                icon_layer
+ COMMON         0x0000000000001e14       0x5c src/c/windows/stats_window.c.33.o
+                0x0000000000001e14                habit_6
+                0x0000000000001e18                layer7
+                0x0000000000001e1c                habit_5
+                0x0000000000001e20                habit_2
+                0x0000000000001e24                layer1
+                0x0000000000001e28                layer4
+                0x0000000000001e2c                habit_9
+                0x0000000000001e30                graph_layer
+                0x0000000000001e34                layer9
+                0x0000000000001e38                habit_3
+                0x0000000000001e3c                habit_0
+                0x0000000000001e40                layer3
+                0x0000000000001e44                habit_8
+                0x0000000000001e48                layer5
+                0x0000000000001e4c                graph_bitmap
+                0x0000000000001e50                stats_window
+                0x0000000000001e54                habit_4
+                0x0000000000001e58                layer6
+                0x0000000000001e5c                layer8
+                0x0000000000001e60                layer0
+                0x0000000000001e64                layer2
+                0x0000000000001e68                habit_1
+                0x0000000000001e6c                habit_7
 
 DISCARD
  libc.a(*)
@@ -1667,31 +1676,31 @@ OUTPUT(/home/rebble/code/pebble_habit_tracker/build/aplite/pebble-app.elf elf32-
  .comment       0x0000000000000000       0x4f src/message_keys.auto.c.33.o
  .comment       0x0000000000000000       0x4f /home/rebble/pebble-dev/pebble-sdk-4.6-rc2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
 
-.debug_info     0x0000000000000000     0x4696
+.debug_info     0x0000000000000000     0x4953
  .debug_info    0x0000000000000000     0x193b src/c/main_window.c.33.o
  .debug_info    0x000000000000193b      0xfdc src/c/windows/habit_list.c.33.o
  .debug_info    0x0000000000002917      0x4b6 src/c/windows/icon_window.c.33.o
- .debug_info    0x0000000000002dcd     0x13c3 src/c/windows/stats_window.c.33.o
- .debug_info    0x0000000000004190      0x31a aplite/appinfo.auto.c.33.o
- .debug_info    0x00000000000044aa       0xc9 aplite/src/resource_ids.auto.c.33.o
- .debug_info    0x0000000000004573      0x123 src/message_keys.auto.c.33.o
+ .debug_info    0x0000000000002dcd     0x166e src/c/windows/stats_window.c.33.o
+ .debug_info    0x000000000000443b      0x31a aplite/appinfo.auto.c.33.o
+ .debug_info    0x0000000000004755       0xdb aplite/src/resource_ids.auto.c.33.o
+ .debug_info    0x0000000000004830      0x123 src/message_keys.auto.c.33.o
 
-.debug_abbrev   0x0000000000000000      0xca1
+.debug_abbrev   0x0000000000000000      0xcbb
  .debug_abbrev  0x0000000000000000      0x45f src/c/main_window.c.33.o
  .debug_abbrev  0x000000000000045f      0x358 src/c/windows/habit_list.c.33.o
  .debug_abbrev  0x00000000000007b7      0x194 src/c/windows/icon_window.c.33.o
- .debug_abbrev  0x000000000000094b      0x230 src/c/windows/stats_window.c.33.o
- .debug_abbrev  0x0000000000000b7b       0x9e aplite/appinfo.auto.c.33.o
- .debug_abbrev  0x0000000000000c19       0x44 aplite/src/resource_ids.auto.c.33.o
- .debug_abbrev  0x0000000000000c5d       0x44 src/message_keys.auto.c.33.o
+ .debug_abbrev  0x000000000000094b      0x24a src/c/windows/stats_window.c.33.o
+ .debug_abbrev  0x0000000000000b95       0x9e aplite/appinfo.auto.c.33.o
+ .debug_abbrev  0x0000000000000c33       0x44 aplite/src/resource_ids.auto.c.33.o
+ .debug_abbrev  0x0000000000000c77       0x44 src/message_keys.auto.c.33.o
 
-.debug_loc      0x0000000000000000      0xdbc
+.debug_loc      0x0000000000000000      0xe26
  .debug_loc     0x0000000000000000      0x671 src/c/main_window.c.33.o
  .debug_loc     0x0000000000000671      0x3c2 src/c/windows/habit_list.c.33.o
  .debug_loc     0x0000000000000a33       0xab src/c/windows/icon_window.c.33.o
- .debug_loc     0x0000000000000ade      0x2de src/c/windows/stats_window.c.33.o
+ .debug_loc     0x0000000000000ade      0x348 src/c/windows/stats_window.c.33.o
 
-.debug_aranges  0x0000000000000000      0x1d0
+.debug_aranges  0x0000000000000000      0x1d8
  .debug_aranges
                 0x0000000000000000       0xd0 src/c/main_window.c.33.o
  .debug_aranges
@@ -1699,47 +1708,47 @@ OUTPUT(/home/rebble/code/pebble_habit_tracker/build/aplite/pebble-app.elf elf32-
  .debug_aranges
                 0x0000000000000128       0x30 src/c/windows/icon_window.c.33.o
  .debug_aranges
-                0x0000000000000158       0x30 src/c/windows/stats_window.c.33.o
+                0x0000000000000158       0x38 src/c/windows/stats_window.c.33.o
  .debug_aranges
-                0x0000000000000188       0x18 aplite/appinfo.auto.c.33.o
+                0x0000000000000190       0x18 aplite/appinfo.auto.c.33.o
  .debug_aranges
-                0x00000000000001a0       0x18 aplite/src/resource_ids.auto.c.33.o
+                0x00000000000001a8       0x18 aplite/src/resource_ids.auto.c.33.o
  .debug_aranges
-                0x00000000000001b8       0x18 src/message_keys.auto.c.33.o
+                0x00000000000001c0       0x18 src/message_keys.auto.c.33.o
 
-.debug_ranges   0x0000000000000000      0x200
+.debug_ranges   0x0000000000000000      0x208
  .debug_ranges  0x0000000000000000      0x118 src/c/main_window.c.33.o
  .debug_ranges  0x0000000000000118       0xa8 src/c/windows/habit_list.c.33.o
  .debug_ranges  0x00000000000001c0       0x20 src/c/windows/icon_window.c.33.o
- .debug_ranges  0x00000000000001e0       0x20 src/c/windows/stats_window.c.33.o
+ .debug_ranges  0x00000000000001e0       0x28 src/c/windows/stats_window.c.33.o
 
-.debug_line     0x0000000000000000      0xf16
+.debug_line     0x0000000000000000      0xf48
  .debug_line    0x0000000000000000      0x517 src/c/main_window.c.33.o
  .debug_line    0x0000000000000517      0x2c4 src/c/windows/habit_list.c.33.o
  .debug_line    0x00000000000007db      0x16f src/c/windows/icon_window.c.33.o
- .debug_line    0x000000000000094a      0x30e src/c/windows/stats_window.c.33.o
- .debug_line    0x0000000000000c58      0x125 aplite/appinfo.auto.c.33.o
- .debug_line    0x0000000000000d7d       0xd0 aplite/src/resource_ids.auto.c.33.o
- .debug_line    0x0000000000000e4d       0xc9 src/message_keys.auto.c.33.o
+ .debug_line    0x000000000000094a      0x340 src/c/windows/stats_window.c.33.o
+ .debug_line    0x0000000000000c8a      0x125 aplite/appinfo.auto.c.33.o
+ .debug_line    0x0000000000000daf       0xd0 aplite/src/resource_ids.auto.c.33.o
+ .debug_line    0x0000000000000e7f       0xc9 src/message_keys.auto.c.33.o
 
-.debug_str      0x0000000000000000     0x14ed
+.debug_str      0x0000000000000000     0x1587
  .debug_str     0x0000000000000000      0xbaa src/c/main_window.c.33.o
                                         0xd13 (size before relaxing)
  .debug_str     0x0000000000000baa      0x2bf src/c/windows/habit_list.c.33.o
                                         0x8e1 (size before relaxing)
  .debug_str     0x0000000000000e69       0xca src/c/windows/icon_window.c.33.o
                                         0x2c7 (size before relaxing)
- .debug_str     0x0000000000000f33      0x2dd src/c/windows/stats_window.c.33.o
-                                        0x557 (size before relaxing)
- .debug_str     0x0000000000001210      0x22f aplite/appinfo.auto.c.33.o
+ .debug_str     0x0000000000000f33      0x365 src/c/windows/stats_window.c.33.o
+                                        0x6a5 (size before relaxing)
+ .debug_str     0x0000000000001298      0x22f aplite/appinfo.auto.c.33.o
                                         0x31b (size before relaxing)
- .debug_str     0x000000000000143f       0x96 aplite/src/resource_ids.auto.c.33.o
-                                        0x15c (size before relaxing)
- .debug_str     0x00000000000014d5       0x18 src/message_keys.auto.c.33.o
+ .debug_str     0x00000000000014c7       0xa8 aplite/src/resource_ids.auto.c.33.o
+                                        0x16e (size before relaxing)
+ .debug_str     0x000000000000156f       0x18 src/message_keys.auto.c.33.o
                                         0x19c (size before relaxing)
 
-.debug_frame    0x0000000000000000      0x394
+.debug_frame    0x0000000000000000      0x3b4
  .debug_frame   0x0000000000000000      0x1c8 src/c/main_window.c.33.o
  .debug_frame   0x00000000000001c8       0xf0 src/c/windows/habit_list.c.33.o
  .debug_frame   0x00000000000002b8       0x68 src/c/windows/icon_window.c.33.o
- .debug_frame   0x0000000000000320       0x74 src/c/windows/stats_window.c.33.o
+ .debug_frame   0x0000000000000320       0x94 src/c/windows/stats_window.c.33.o

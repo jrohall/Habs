@@ -63,6 +63,11 @@
           "type": "bitmap", 
           "name": "WHITE_UNCHECKED", 
           "file": "images/white_unchecked.png"
+        }, 
+        {
+          "type": "bitmap", 
+          "name": "GRAPH", 
+          "file": "images/test.png"
         }
       ]
     }
