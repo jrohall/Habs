@@ -8,19 +8,19 @@ TextLayer *stats_text;
 TextLayer *habit_0, *habit_1, *habit_2, *habit_3, *habit_4, *habit_5, *habit_6, *habit_7, *habit_8, *habit_9;
 
 void stats_window_load(Window *window){
-  load_clay();
+  //load_clay();
 	Layer *window_layer = window_get_root_layer(window);
 
 	int label_x = 5;
-  stats_text = text_layer_create(GRect(90, 5, 148, 166));
+  stats_text = text_layer_create(GRect(label_x, 5, 148, 166));
   // label buffer
-  char habits_labels[10*10];
-  memset(habits_labels, 0, sizeof(habits_labels));
-  for (int i = 0; i < 10; i++) {
-    strcat(habits_labels, habits_clay_list[i]);
-    strcat(habits_labels, "\n");
-  }
-  text_layer_set_text(stats_text, habits_labels);
+  //char habits_labels[10*10];
+  //memset(habits_labels, 0, sizeof(habits_labels));
+  //for (int i = 0; i < 10; i++) {
+  //  strcat(habits_labels, habits_clay_list[i]);
+  //  strcat(habits_labels, "\n");
+  //}
+  text_layer_set_text(stats_text, "BRUHHHHHH");
   text_layer_set_text_color(stats_text, GColorBlack);
   text_layer_set_background_color(stats_text, GColorClear);
   //text_layer_set_text_alignment(stats_text, GTextAlignmentCenter);
