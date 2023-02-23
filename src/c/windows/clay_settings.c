@@ -5,7 +5,7 @@
 #define MAX_STRING_LENGTH 10
 
 
-extern char habits_clay_list[NUM_ELEMENTS][MAX_STRING_LENGTH];
+char habits_clay_list[NUM_ELEMENTS][MAX_STRING_LENGTH];
 int total_elements = 0;
 
 // define every variable that will be covered under settings
@@ -263,8 +263,7 @@ static void deinit(){
 	// nothing to de-init here! no window or layer data
 }
 
-char * get_habits(){
+void load_clay(){
 	init();
 	deinit();
-	return *habits_clay_list;
 }

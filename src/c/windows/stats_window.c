@@ -6,19 +6,22 @@ Window *stats_window;
 TextLayer *stats_text;
 // I KNOW this is not the best way of doing this, please forgive me, I am new to pebble development!
 TextLayer *habit_0, *habit_1, *habit_2, *habit_3, *habit_4, *habit_5, *habit_6, *habit_7, *habit_8, *habit_9;
-//extern int habit_stats[10];
-//char * habit_title_list[10][10] = get_habits(); least amount of errors so far
-#define HABIT_TITLES get_habits();
 
 void stats_window_load(Window *window){
+  load_clay();
 	Layer *window_layer = window_get_root_layer(window);
 
 	int label_x = 5;
-  stats_text = text_layer_create(GRect(label_x, 5, 148, 166));
-  //text_layer_set_text(stats_text, "Habit 1: \nHabit 2: \nHabit 3: \nHabit 4: \nHabit 5: \nHabit 6: \nHabit 7: \nHabit 8: \nHabit 9: \nHabit 10: \n");
-  static char title_0_buff[10];
-  //title_0_buff = strcpy(title_0_buff, HABIT_TITLES[0]);
-  text_layer_set_text(stats_text, title_0_buff);
+  stats_text = text_layer_create(GRect(90, 5, 148, 166));
+  // label buffer
+  char habits_labels[10*10];
+  memset(habits_labels, 0, sizeof(habits_labels));
+  for (int i = 0; i < 10; i++) {
+    strcat(habits_labels, habits_clay_list[i]);
+    strcat(habits_labels, "\n");
+  }
+  text_layer_set_text(stats_text, habits_labels);
+  text_layer_set_text_color(stats_text, GColorBlack);
   text_layer_set_background_color(stats_text, GColorClear);
   //text_layer_set_text_alignment(stats_text, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(stats_text));
