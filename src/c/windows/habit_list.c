@@ -115,7 +115,7 @@ void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index,
         if(s_selections[i]) {
             habit_stats[i] += 1;
         }
-        //APP_LOG(APP_LOG_LEVEL_INFO, "Option %d was %s", i, (s_selections[i] ? "selected" : "not selected"));
+        APP_LOG(APP_LOG_LEVEL_INFO, "Option %d was %d", i, habit_stats[i]);
     }
     save_stats();
 
