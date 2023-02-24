@@ -9,12 +9,15 @@ Feel free to visit the GitHub page to add suggestions, report bugs and more!
 
 ## Preview
 Home Interface:
+
 <img width="109" alt="Screen Shot 2023-02-24 at 3 34 33 PM" src="https://user-images.githubusercontent.com/103393035/221299217-732bdcf4-5c16-4f8a-a883-dc2151e6ee9f.png">
 
 Habit Screen:
+
 <img width="108" alt="Screen Shot 2023-02-24 at 3 34 05 PM" src="https://user-images.githubusercontent.com/103393035/221299283-a86a29b7-1a74-425c-b5ab-d18459942f8f.png">
 
 Streaks Window:
+
 <img width="108" alt="Screen Shot 2023-02-24 at 3 35 34 PM" src="https://user-images.githubusercontent.com/103393035/221299327-29baf83c-ef84-4142-a5b7-5530e22498fa.png">
 
 
