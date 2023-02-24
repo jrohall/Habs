@@ -13,15 +13,6 @@ TextLayer *habit_0, *habit_1, *habit_2, *habit_3, *habit_4, *habit_5, *habit_6, 
 GBitmap *graph_bitmap;
 BitmapLayer *graph_layer;
 
-void canvas_draw(Layer *layer, GContext *ctx){
-  // drawing the lines :)
-  graphics_context_set_stroke_color(ctx, GColorBlack);
-  graphics_context_set_fill_color(ctx, GColorBlack);
-  graphics_context_set_stroke_width(ctx, 5);
-  GPoint start_1 = GPoint(0, 16);
-  GPoint end_1 = GPoint(148, 16);
-  graphics_draw_line(ctx, start_1, end_1);
-}
 
 void stats_window_load(Window *window){
   // unfortunately, I have to manage each habit individually...

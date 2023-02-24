@@ -1,6 +1,6 @@
 #include <pebble.h>
 
-#include "windows/icon_window.h"
+#include "windows/options_window.h"
 #include "windows/habit_list.h"
 #include "windows/stats_window.h"
 #include "windows/clay_settings.h"
@@ -270,7 +270,7 @@ void draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, 
         menu_cell_basic_draw(ctx, cell_layer, "Habits", "-> habit list", NULL);
         break;
     case 1:
-        menu_cell_basic_draw(ctx, cell_layer, "Statistics", "-> habit stats", NULL);
+        menu_cell_basic_draw(ctx, cell_layer, "Streaks", "-> streak stats", NULL); // called stats_window for now
         break;
     case 2:
         menu_cell_basic_draw(ctx, cell_layer, "Options", "-> habit settings", NULL);
@@ -299,31 +299,9 @@ void select_click_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *c
             stats_window_push();
             break;
         case 2:
-            icon_window_push();
+            options_window_push();
             break;
     }
-
-    /* ADD VIBRATIONS WHEN SELECT BUTTON IS PRESSED
-    //The array that will hold the on/off vibration times
-    uint32_t segments[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
- 
-    //Build the pattern (milliseconds on and off in alternating positions)
-    for(int i = 0; i < which + 1; i++)
-    {
-        segments[2 * i] = 200;
-        segments[(2 * i) + 1] = 100;
-    }
-    
-    
-    //Create a VibePattern data structure
-    VibePattern pattern = {
-        .durations = segments,
-        .num_segments = 16
-    };
- 
-    //Do the vibration pattern!
-    vibes_enqueue_custom_pattern(pattern);
-    */
 
     
 }

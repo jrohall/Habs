@@ -6,6 +6,7 @@ static MenuLayer *habit_menu_layer;
 static GBitmap *unchecked_icon, *checked_icon, *white_checked_icon, *white_unchecked_icon;
 static bool s_selections[HABIT_WINDOW_ROWS];
 int habit_stats[10];
+//const char* menu_label_list[] = {} 
 
 // in order to save the habit data to persistant storage, there are a few functions that need to be declared..
 void save_stats(){
@@ -17,14 +18,63 @@ int * load_data(){
     return habit_stats;
 }
 
+// sets a different variable for each menu cell
+char* get_memu_cell_text(uint16_t row_index){
+    // declare habits
+    char *habit0_label = load_habit0(); 
+    char *habit1_label = load_habit1();
+    char *habit2_label = load_habit2();
+    char *habit3_label = load_habit3();
+    char *habit4_label = load_habit4();
+    char *habit5_label = load_habit5();
+    char *habit6_label = load_habit6();
+    char *habit7_label = load_habit7();
+    char *habit8_label = load_habit8();
+    char *habit9_label = load_habit9();
+
+    if(row_index == 0){
+        return (char*) habit0_label;
+    }
+    else if(row_index == 1){
+        return (char*) habit1_label;
+    }
+    else if(row_index == 2){
+        return (char*) habit2_label;
+    }
+    else if(row_index == 3){
+        return (char*) habit3_label;
+    }
+    else if(row_index == 4){
+        return (char*) habit4_label;
+    }
+    else if(row_index == 5){
+        return (char*) habit5_label;
+    }
+    else if(row_index == 6){
+        return (char*) habit6_label;
+    }
+    else if(row_index == 7){
+        return (char*) habit7_label;
+    }
+    else if(row_index == 8){
+        return (char*) habit8_label;
+    }
+    else if(row_index == 9){
+        return (char*) habit9_label;
+    }
+    else {
+        return (char*) "";
+    }
+}
+
 
 // Menus need many inputs in order to function properly, which is where these callbacks come into play
 // These callbacks must be defined BEFORE (above) tthe window_load function
 
 // alters what is drawn in a row based on which index it is
 // we need to tell the function which row is which based on a switch method:
-void h_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context)
-{
+void h_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context){
+
 
 	if(cell_index->row == HABIT_WINDOW_ROWS) {
     // i am using a submit button for a user to submit which habits they have complete, which
@@ -34,7 +84,8 @@ void h_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index
   	else {
 	    // main habits in list (must integrate custom user list later)
 	    static char habit_list_buff[16];
-	    snprintf(habit_list_buff, sizeof(habit_list_buff), "Habit %d", (int)cell_index->row);
+	    //snprintf(habit_list_buff, sizeof(habit_list_buff), "Habit %d", (int)cell_index->row);
+        snprintf(habit_list_buff, sizeof(habit_list_buff), get_memu_cell_text((int)cell_index->row));
 	    menu_cell_basic_draw(ctx, cell_layer, habit_list_buff, NULL, NULL);
 	}
 
@@ -75,53 +126,29 @@ void h_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index
 }
 
 // simply returns the number of rows wanted in a list
-uint16_t h_num_rows_callback(MenuLayer *habit_menu_layer, uint16_t section_index, void *callback_context)
-{
+uint16_t h_num_rows_callback(MenuLayer *habit_menu_layer, uint16_t section_index, void *callback_context){
   return HABIT_WINDOW_ROWS + 1;
 }
 
-void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index, void *callback_context)
-{
+void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index, void *callback_context){
     //Get which row
     int which = cell_index->row;
- 
-    //The array that will hold the on/off vibration times
-    uint32_t segments[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
- 
-    //Build the pattern (milliseconds on and off in alternating positions)
-    for(int i = 0; i < which + 1; i++)
-    {
-        segments[2 * i] = 200;
-        segments[(2 * i) + 1] = 100;
-    }
-    
-    
-    //Create a VibePattern data structure
-    VibePattern pattern = {
-        .durations = segments,
-        .num_segments = 16
-    };
- 
-    //Do the vibration pattern!
-    vibes_enqueue_custom_pattern(pattern);
-
 
     // check if the submit button is pressed firstt, then check the other rows
     if(cell_index->row == HABIT_WINDOW_ROWS) {
-    // add to checked boxes statistics page (will do after this window is complete)
-
-    // pebble UI example loop:
-    for(int i = 0; i < HABIT_WINDOW_ROWS; i++) {
-        if(s_selections[i]) {
-            habit_stats[i] += 1;
+        // pebble UI example loop:
+        for(int i = 0; i < HABIT_WINDOW_ROWS; i++) {
+            if(s_selections[i]) {
+                habit_stats[i] += 1;
+            }
+            //APP_LOG(APP_LOG_LEVEL_INFO, "Option %d was %d", i, habit_stats[i]);
         }
-        APP_LOG(APP_LOG_LEVEL_INFO, "Option %d was %d", i, habit_stats[i]);
-    }
-    save_stats();
+        save_stats();
 
     // return to previous window (in this case, the main menu.)
-    window_stack_pop(true);
-  } else {
+        window_stack_pop(true);
+    } 
+    else {
     // this is for the rest of the habits, we need to know when they are being checked and unchecked.
     int row = cell_index->row;
     s_selections[row] = !s_selections[row];

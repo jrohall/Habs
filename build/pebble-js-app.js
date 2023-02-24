@@ -247,6 +247,10 @@
 	        }
 	      }
 	    ]
+	  },
+	  {
+		"type": "submit",
+		"defaultValue": "Save"
 	  }
 	];
 

@@ -111,5 +111,9 @@ module.exports = [
         }
       }
     ]
+  },
+  {
+	"type": "submit",
+	"defaultValue": "Save"
   }
 ];
