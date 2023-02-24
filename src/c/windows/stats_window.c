@@ -61,154 +61,174 @@ void stats_window_load(Window *window){
   // loading in the stats from the habits page
   int *habit_stats = load_data();
 
-  layer0 = text_layer_create(GRect(label_x, label_y, 148, 166));
-  text_layer_set_text(layer0, habit0_label);
-  text_layer_set_text_color(layer0, GColorBlack);
-  text_layer_set_background_color(layer0, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(layer0));
+  if(strcmp(habit0_label, "Habit 0") != 0){
+    layer0 = text_layer_create(GRect(label_x, label_y, 148, 166));
+    text_layer_set_text(layer0, habit0_label);
+    text_layer_set_text_color(layer0, GColorBlack);
+    text_layer_set_background_color(layer0, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(layer0));
 
-  static char habit_buff0[16];
-  snprintf(habit_buff0, sizeof(habit_buff0), "%d", habit_stats[0]);
-  habit_0 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
-  text_layer_set_text(habit_0, habit_buff0);
-  text_layer_set_font(habit_0, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-  text_layer_set_background_color(habit_0, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(habit_0));
+    static char habit_buff0[16];
+    snprintf(habit_buff0, sizeof(habit_buff0), "%d", habit_stats[0]);
+    habit_0 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
+    text_layer_set_text(habit_0, habit_buff0);
+    text_layer_set_font(habit_0, fonts_get_system_font(FONT_KEY_GOTHIC_14));
+    text_layer_set_background_color(habit_0, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(habit_0));
+  }
 
-  label_y = label_y + change_y;
-  layer1 = text_layer_create(GRect(label_x, label_y, 148, 166));
-  text_layer_set_text(layer1, habit1_label);
-  text_layer_set_text_color(layer1, GColorBlack);
-  text_layer_set_background_color(layer1, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(layer1));
+  if(strcmp(habit1_label, "Habit 1") != 0){
+    label_y = label_y + change_y;
+    layer1 = text_layer_create(GRect(label_x, label_y, 148, 166));
+    text_layer_set_text(layer1, habit1_label);
+    text_layer_set_text_color(layer1, GColorBlack);
+    text_layer_set_background_color(layer1, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(layer1));
 
-  static char habit_buff1[16];
-  snprintf(habit_buff1, sizeof(habit_buff1), "%d", habit_stats[1]);
-  habit_1 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
-  text_layer_set_text(habit_1, habit_buff1);
-  text_layer_set_font(habit_1, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-  text_layer_set_background_color(habit_1, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(habit_1));
+    static char habit_buff1[16];
+    snprintf(habit_buff1, sizeof(habit_buff1), "%d", habit_stats[1]);
+    habit_1 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
+    text_layer_set_text(habit_1, habit_buff1);
+    text_layer_set_font(habit_1, fonts_get_system_font(FONT_KEY_GOTHIC_14));
+    text_layer_set_background_color(habit_1, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(habit_1));
+  }
 
-  label_y = label_y + change_y;
-  layer2 = text_layer_create(GRect(label_x, label_y, 148, 166));
-  text_layer_set_text(layer2, habit2_label);
-  text_layer_set_text_color(layer2, GColorBlack);
-  text_layer_set_background_color(layer2, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(layer2));
+  if(strcmp(habit2_label, "Habit 2") != 0){
+    label_y = label_y + change_y;
+    layer2 = text_layer_create(GRect(label_x, label_y, 148, 166));
+    text_layer_set_text(layer2, habit2_label);
+    text_layer_set_text_color(layer2, GColorBlack);
+    text_layer_set_background_color(layer2, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(layer2));
 
-  static char habit_buff2[16];
-  snprintf(habit_buff2, sizeof(habit_buff2), "%d", habit_stats[2]);
-  habit_2 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
-  text_layer_set_text(habit_2, habit_buff2);
-  text_layer_set_font(habit_2, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-  text_layer_set_background_color(habit_2, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(habit_2));
+    static char habit_buff2[16];
+    snprintf(habit_buff2, sizeof(habit_buff2), "%d", habit_stats[2]);
+    habit_2 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
+    text_layer_set_text(habit_2, habit_buff2);
+    text_layer_set_font(habit_2, fonts_get_system_font(FONT_KEY_GOTHIC_14));
+    text_layer_set_background_color(habit_2, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(habit_2));
+  }
 
-  label_y = label_y + change_y;
-  layer3 = text_layer_create(GRect(label_x, label_y, 148, 166));
-  text_layer_set_text(layer3, habit3_label);
-  text_layer_set_text_color(layer3, GColorBlack);
-  text_layer_set_background_color(layer3, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(layer3));
+  if(strcmp(habit3_label, "Habit 3") != 0){
+    label_y = label_y + change_y;
+    layer3 = text_layer_create(GRect(label_x, label_y, 148, 166));
+    text_layer_set_text(layer3, habit3_label);
+    text_layer_set_text_color(layer3, GColorBlack);
+    text_layer_set_background_color(layer3, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(layer3));
 
-  static char habit_buff3[16];
-  snprintf(habit_buff3, sizeof(habit_buff3), "%d", habit_stats[3]);
-  habit_3 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
-  text_layer_set_text(habit_3, habit_buff3);
-  text_layer_set_font(habit_3, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-  text_layer_set_background_color(habit_3, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(habit_3));
+    static char habit_buff3[16];
+    snprintf(habit_buff3, sizeof(habit_buff3), "%d", habit_stats[3]);
+    habit_3 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
+    text_layer_set_text(habit_3, habit_buff3);
+    text_layer_set_font(habit_3, fonts_get_system_font(FONT_KEY_GOTHIC_14));
+    text_layer_set_background_color(habit_3, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(habit_3));
+  }
 
-  label_y = label_y + change_y;
-  layer4 = text_layer_create(GRect(label_x, label_y, 148, 166));
-  text_layer_set_text(layer4, habit4_label);
-  text_layer_set_text_color(layer4, GColorBlack);
-  text_layer_set_background_color(layer4, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(layer4));
+  if(strcmp(habit4_label, "Habit 4") != 0){
+    label_y = label_y + change_y;
+    layer4 = text_layer_create(GRect(label_x, label_y, 148, 166));
+    text_layer_set_text(layer4, habit4_label);
+    text_layer_set_text_color(layer4, GColorBlack);
+    text_layer_set_background_color(layer4, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(layer4));
 
-  static char habit_buff4[16];
-  snprintf(habit_buff4, sizeof(habit_buff4), "%d", habit_stats[4]);
-  habit_4 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
-  text_layer_set_text(habit_4, habit_buff4);
-  text_layer_set_font(habit_4, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-  text_layer_set_background_color(habit_4, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(habit_4));
+    static char habit_buff4[16];
+    snprintf(habit_buff4, sizeof(habit_buff4), "%d", habit_stats[4]);
+    habit_4 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
+    text_layer_set_text(habit_4, habit_buff4);
+    text_layer_set_font(habit_4, fonts_get_system_font(FONT_KEY_GOTHIC_14));
+    text_layer_set_background_color(habit_4, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(habit_4));
+  }
 
-  label_y = label_y + change_y;
-  layer5 = text_layer_create(GRect(label_x, label_y, 148, 166));
-  text_layer_set_text(layer5, habit5_label);
-  text_layer_set_text_color(layer5, GColorBlack);
-  text_layer_set_background_color(layer5, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(layer5));
+  if(strcmp(habit5_label, "Habit 5") != 0){
+    label_y = label_y + change_y;
+    layer5 = text_layer_create(GRect(label_x, label_y, 148, 166));
+    text_layer_set_text(layer5, habit5_label);
+    text_layer_set_text_color(layer5, GColorBlack);
+    text_layer_set_background_color(layer5, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(layer5));
 
-  static char habit_buff5[16];
-  snprintf(habit_buff5, sizeof(habit_buff5), "%d", habit_stats[5]);
-  habit_5 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
-  text_layer_set_text(habit_5, habit_buff5);
-  text_layer_set_font(habit_5, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-  text_layer_set_background_color(habit_5, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(habit_5));
+    static char habit_buff5[16];
+    snprintf(habit_buff5, sizeof(habit_buff5), "%d", habit_stats[5]);
+    habit_5 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
+    text_layer_set_text(habit_5, habit_buff5);
+    text_layer_set_font(habit_5, fonts_get_system_font(FONT_KEY_GOTHIC_14));
+    text_layer_set_background_color(habit_5, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(habit_5));
+  }
 
-  label_y = label_y + change_y;
-  layer6 = text_layer_create(GRect(label_x, label_y, 148, 166));
-  text_layer_set_text(layer6, habit6_label);
-  text_layer_set_text_color(layer6, GColorBlack);
-  text_layer_set_background_color(layer6, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(layer6));
+  if(strcmp(habit6_label, "Habit 6") != 0){
+    label_y = label_y + change_y;
+    layer6 = text_layer_create(GRect(label_x, label_y, 148, 166));
+    text_layer_set_text(layer6, habit6_label);
+    text_layer_set_text_color(layer6, GColorBlack);
+    text_layer_set_background_color(layer6, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(layer6));
 
-  static char habit_buff6[16];
-  snprintf(habit_buff6, sizeof(habit_buff6), "%d", habit_stats[6]);
-  habit_6 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
-  text_layer_set_text(habit_6, habit_buff6);
-  text_layer_set_font(habit_6, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-  text_layer_set_background_color(habit_6, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(habit_6));
+    static char habit_buff6[16];
+    snprintf(habit_buff6, sizeof(habit_buff6), "%d", habit_stats[6]);
+    habit_6 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
+    text_layer_set_text(habit_6, habit_buff6);
+    text_layer_set_font(habit_6, fonts_get_system_font(FONT_KEY_GOTHIC_14));
+    text_layer_set_background_color(habit_6, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(habit_6));
+  }
 
-  label_y = label_y + change_y;
-  layer7 = text_layer_create(GRect(label_x, label_y, 148, 166));
-  text_layer_set_text(layer7, habit7_label);
-  text_layer_set_text_color(layer7, GColorBlack);
-  text_layer_set_background_color(layer7, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(layer7));
+  if(strcmp(habit7_label, "Habit 7") != 0){
+    label_y = label_y + change_y;
+    layer7 = text_layer_create(GRect(label_x, label_y, 148, 166));
+    text_layer_set_text(layer7, habit7_label);
+    text_layer_set_text_color(layer7, GColorBlack);
+    text_layer_set_background_color(layer7, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(layer7));
 
-  static char habit_buff7[16];
-  snprintf(habit_buff7, sizeof(habit_buff7), "%d", habit_stats[7]);
-  habit_7 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
-  text_layer_set_text(habit_7, habit_buff7);
-  text_layer_set_font(habit_7, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-  text_layer_set_background_color(habit_7, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(habit_7));
+    static char habit_buff7[16];
+    snprintf(habit_buff7, sizeof(habit_buff7), "%d", habit_stats[7]);
+    habit_7 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
+    text_layer_set_text(habit_7, habit_buff7);
+    text_layer_set_font(habit_7, fonts_get_system_font(FONT_KEY_GOTHIC_14));
+    text_layer_set_background_color(habit_7, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(habit_7));
+  }
 
-  label_y = label_y + change_y;
-  layer8 = text_layer_create(GRect(label_x, label_y, 148, 166));
-  text_layer_set_text(layer8, habit8_label);
-  text_layer_set_text_color(layer8, GColorBlack);
-  text_layer_set_background_color(layer8, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(layer8));
+  if(strcmp(habit8_label, "Habit 8") != 0){
+    label_y = label_y + change_y;
+    layer8 = text_layer_create(GRect(label_x, label_y, 148, 166));
+    text_layer_set_text(layer8, habit8_label);
+    text_layer_set_text_color(layer8, GColorBlack);
+    text_layer_set_background_color(layer8, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(layer8));
 
-  static char habit_buff8[16];
-  snprintf(habit_buff8, sizeof(habit_buff8), "%d", habit_stats[8]);
-  habit_8 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
-  text_layer_set_text(habit_8, habit_buff8);
-  text_layer_set_font(habit_8, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-  text_layer_set_background_color(habit_8, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(habit_8));
+    static char habit_buff8[16];
+    snprintf(habit_buff8, sizeof(habit_buff8), "%d", habit_stats[8]);
+    habit_8 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
+    text_layer_set_text(habit_8, habit_buff8);
+    text_layer_set_font(habit_8, fonts_get_system_font(FONT_KEY_GOTHIC_14));
+    text_layer_set_background_color(habit_8, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(habit_8));
+  }
 
-  label_y = label_y + change_y;
-  layer9 = text_layer_create(GRect(label_x, label_y, 148, 166));
-  text_layer_set_text(layer9, habit9_label);
-  text_layer_set_text_color(layer9, GColorBlack);
-  text_layer_set_background_color(layer9, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(layer9));
+  if(strcmp(habit9_label, "Habit 9") != 0){
+    label_y = label_y + change_y;
+    layer9 = text_layer_create(GRect(label_x, label_y, 148, 166));
+    text_layer_set_text(layer9, habit9_label);
+    text_layer_set_text_color(layer9, GColorBlack);
+    text_layer_set_background_color(layer9, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(layer9));
 
-  static char habit_buff9[16];
-  snprintf(habit_buff9, sizeof(habit_buff9), "%d", habit_stats[9]);
-  habit_9 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
-  text_layer_set_text(habit_9, habit_buff9);
-  text_layer_set_font(habit_9, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-  text_layer_set_background_color(habit_9, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(habit_9));
+    static char habit_buff9[16];
+    snprintf(habit_buff9, sizeof(habit_buff9), "%d", habit_stats[9]);
+    habit_9 = text_layer_create(GRect(label_x + change_x, label_y, 148, 166));
+    text_layer_set_text(habit_9, habit_buff9);
+    text_layer_set_font(habit_9, fonts_get_system_font(FONT_KEY_GOTHIC_14));
+    text_layer_set_background_color(habit_9, GColorClear);
+    layer_add_child(window_layer, text_layer_get_layer(habit_9));
+  }
 
 }
 
@@ -249,3 +269,4 @@ void stats_window_push() {
   }
   window_stack_push(stats_window, true);
 }
+

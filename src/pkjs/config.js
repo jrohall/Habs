@@ -1,11 +1,11 @@
 module.exports = [
   {
     "type": "heading",
-    "defaultValue": "Habits Configuration"
+    "defaultValue": "Habit Configuration"
   },
   {
     "type": "text",
-    "defaultValue": "Enter your habits here"
+    "defaultValue": "Enter your habits here (10 character limit)"
   },
   {
     "type": "section",

@@ -6,7 +6,6 @@ static MenuLayer *habit_menu_layer;
 static GBitmap *unchecked_icon, *checked_icon, *white_checked_icon, *white_unchecked_icon;
 static bool s_selections[HABIT_WINDOW_ROWS];
 int habit_stats[10];
-//const char* menu_label_list[] = {} 
 
 // in order to save the habit data to persistant storage, there are a few functions that need to be declared..
 void save_stats(){
@@ -18,8 +17,11 @@ int * load_data(){
     return habit_stats;
 }
 
-// sets a different variable for each menu cell
-char* get_memu_cell_text(uint16_t row_index){
+// returns the number of rows wanted in a list
+int get_num_rows() {
+    // num of rows
+    int rows = 0;
+
     // declare habits
     char *habit0_label = load_habit0(); 
     char *habit1_label = load_habit1();
@@ -32,6 +34,65 @@ char* get_memu_cell_text(uint16_t row_index){
     char *habit8_label = load_habit8();
     char *habit9_label = load_habit9();
 
+    // check which rows are different than the default value
+    if(strcmp(habit0_label, "Habit 0") != 0){
+        rows++;
+    }
+
+    if(strcmp(habit1_label, "Habit 1") != 0){
+        rows++;
+    }
+
+    if(strcmp(habit2_label, "Habit 2") != 0){
+        rows++;
+    }
+
+    if(strcmp(habit3_label, "Habit 3") != 0){
+        rows++;
+    }
+
+    if(strcmp(habit4_label, "Habit 4") != 0){
+        rows++;
+    }
+
+    if(strcmp(habit5_label, "Habit 5") != 0){
+        rows++;
+    }
+
+    if(strcmp(habit6_label, "Habit 6") != 0){
+        rows++;
+    }
+
+    if(strcmp(habit7_label, "Habit 7") != 0){
+        rows++;
+    }
+
+    if(strcmp(habit8_label, "Habit 8") != 0){
+        rows++;
+    }
+
+    if(strcmp(habit9_label, "Habit 9") != 0){
+        rows++;
+    }
+
+    return rows;
+} 
+
+// sets a different variable for each menu cell
+char* get_menu_cell_text(uint16_t row_index){
+    // declare habits
+    char *habit0_label = load_habit0(); 
+    char *habit1_label = load_habit1();
+    char *habit2_label = load_habit2();
+    char *habit3_label = load_habit3();
+    char *habit4_label = load_habit4();
+    char *habit5_label = load_habit5();
+    char *habit6_label = load_habit6();
+    char *habit7_label = load_habit7();
+    char *habit8_label = load_habit8();
+    char *habit9_label = load_habit9();
+
+    // check which row is calling
     if(row_index == 0){
         return (char*) habit0_label;
     }
@@ -75,17 +136,16 @@ char* get_memu_cell_text(uint16_t row_index){
 // we need to tell the function which row is which based on a switch method:
 void h_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context){
 
-
-	if(cell_index->row == HABIT_WINDOW_ROWS) {
+	if(cell_index->row == get_num_rows()) {
     // i am using a submit button for a user to submit which habits they have complete, which
     // should (hopefully) connect to another window which provides statistics on the user's habits
     	menu_cell_basic_draw(ctx, cell_layer, "Submit", "(submit checked habits)", NULL);
   	} 
-  	else {
+  	else{
 	    // main habits in list (must integrate custom user list later)
 	    static char habit_list_buff[16];
 	    //snprintf(habit_list_buff, sizeof(habit_list_buff), "Habit %d", (int)cell_index->row);
-        snprintf(habit_list_buff, sizeof(habit_list_buff), get_memu_cell_text((int)cell_index->row));
+        snprintf(habit_list_buff, sizeof(habit_list_buff), get_menu_cell_text((int)cell_index->row));
 	    menu_cell_basic_draw(ctx, cell_layer, habit_list_buff, NULL, NULL);
 	}
 
@@ -110,12 +170,12 @@ void h_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index
     }
 
     // draw an unchecked box if the row is not the submission row
-    if(cell_index->row != HABIT_WINDOW_ROWS){
+    if(cell_index->row != get_num_rows()){
         graphics_context_set_compositing_mode(ctx, GCompOpSet);
         graphics_draw_bitmap_in_rect(ctx, un_ptr, GRect(ptr_dim.origin.x, ptr_dim.origin.y - 3, bitmap_bounds.size.w, bitmap_bounds.size.h));
     }
     // draw the selected checkbox if a (non-submit) row is selected
-    if(s_selections[cell_index->row] && cell_index->row != HABIT_WINDOW_ROWS) {
+    if(s_selections[cell_index->row] && cell_index->row != get_num_rows()) {
         graphics_context_set_compositing_mode(ctx, GCompOpSet);
         graphics_draw_bitmap_in_rect(ctx, ch_ptr, GRect(ptr_dim.origin.x, ptr_dim.origin.y - 3, bitmap_bounds.size.w, bitmap_bounds.size.h));
     }
@@ -125,19 +185,16 @@ void h_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index
     // - The check boxes are slightly off center
 }
 
-// simply returns the number of rows wanted in a list
 uint16_t h_num_rows_callback(MenuLayer *habit_menu_layer, uint16_t section_index, void *callback_context){
-  return HABIT_WINDOW_ROWS + 1;
+    return get_num_rows() + 1;
 }
 
 void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index, void *callback_context){
-    //Get which row
-    int which = cell_index->row;
 
     // check if the submit button is pressed firstt, then check the other rows
-    if(cell_index->row == HABIT_WINDOW_ROWS) {
+    if(cell_index->row == get_num_rows()) {
         // pebble UI example loop:
-        for(int i = 0; i < HABIT_WINDOW_ROWS; i++) {
+        for(int i = 0; i < get_num_rows(); i++) {
             if(s_selections[i]) {
                 habit_stats[i] += 1;
             }
