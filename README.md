@@ -7,7 +7,17 @@ Please keep in mind this is a very minimal beta application and will be updated 
 
 Feel free to visit the GitHub page to add suggestions, report bugs and more!
 
---jerroh
+## Preview
+Home Interface:
+<img width="109" alt="Screen Shot 2023-02-24 at 3 34 33 PM" src="https://user-images.githubusercontent.com/103393035/221299217-732bdcf4-5c16-4f8a-a883-dc2151e6ee9f.png">
+
+Habit Screen:
+<img width="108" alt="Screen Shot 2023-02-24 at 3 34 05 PM" src="https://user-images.githubusercontent.com/103393035/221299283-a86a29b7-1a74-425c-b5ab-d18459942f8f.png">
+
+Streaks Window:
+<img width="108" alt="Screen Shot 2023-02-24 at 3 35 34 PM" src="https://user-images.githubusercontent.com/103393035/221299327-29baf83c-ef84-4142-a5b7-5530e22498fa.png">
+
+
 
 ## Getting Started
 
@@ -68,4 +78,4 @@ Not open at the moment, coming soon!
 ## Acknowledgments
 
 * Rebble - for keeping the pebble alive :)
-* Pebble UI Examples - https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwir-uWCkK_9AhVPlYkEHXBPC5UQFnoECBoQAQ&url=https%3A%2F%2Fgithub.com%2Fpebble-examples%2Fui-patterns&usg=AOvVaw1Gsu4ErdSBTv_6Af03UM_M
+* Pebble UI Examples - https://github.com/pebble-examples/ui-patterns
