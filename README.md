@@ -1,6 +1,7 @@
 # Habs: A minimal habit tracker
 
 ==== BETA 1.0 ====
+
 This app is a beta release of a minimal habit tracker that allows users to set custom habits on the pebble app, which will update the pebble application. Once the user logs a habit, the streak tab will be updated.
 
 Please keep in mind this is a very minimal beta application and will be updated with more features and better GUI going into the future.
@@ -21,19 +22,10 @@ Streaks Window:
 <img width="108" alt="Screen Shot 2023-02-24 at 3 35 34 PM" src="https://user-images.githubusercontent.com/103393035/221299327-29baf83c-ef84-4142-a5b7-5530e22498fa.png">
 
 
-
 ## Getting Started
 
 Access the rebble store here: https://store-beta.rebble.io/faces
 Once the application is downloaded onto the watch, habits can be saved in the settings page on the pebble application.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
 
 ### Developers
 
