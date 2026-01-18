@@ -10,7 +10,7 @@
   ],
   "pebble": {
     "sdkVersion": "3",
-    "displayName": "pebble_habit_tracker",
+    "displayName": "Habs: A minimal habit tracker",
     "uuid": "75e4c603-51c9-4f3b-b9c9-86a38ab19ac1",
     "messageKeys": [
       "Habit0",
