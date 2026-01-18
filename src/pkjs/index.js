@@ -1,5 +1,5 @@
 // import clay package
-var Clay = require('pebble-clay');
+var Clay = require('@rebble/clay');
 // load clay config file
 var clayConfig = require('./config');
 // initialize clay
