@@ -75,7 +75,7 @@
           "menuIcon": true,
           "type": "bitmap",
           "name": "IMAGE_MENU_ICON",
-          "file": "images/checked_icon.png"
+          "file": "images/Pebble_25x25_Generic_confirmation.png"
         }
       ]
     }
