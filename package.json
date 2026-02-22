@@ -1,76 +1,84 @@
 {
-  "version": "1.0.0", 
-  "author": "jerroh", 
-  "private": true, 
+  "version": "1.0.0",
+  "author": "jerroh",
+  "private": true,
   "dependencies": {
-    "pebble-clay": "^1.0.4"
-  }, 
+    "@rebble/clay": "^1.0.6"
+  },
   "keywords": [
     "pebble-app"
-  ], 
+  ],
   "pebble": {
-    "sdkVersion": "3", 
-    "displayName": "pebble_habit_tracker", 
-    "uuid": "75e4c603-51c9-4f3b-b9c9-86a38ab19ac1", 
+    "sdkVersion": "3",
+    "displayName": "Habs: A minimal habit tracker",
+    "uuid": "75e4c603-51c9-4f3b-b9c9-86a38ab19ac1",
     "messageKeys": [
-      "Habit0", 
-      "Habit1", 
-      "Habit2", 
-      "Habit3", 
-      "Habit4", 
-      "Habit5", 
-      "Habit6", 
-      "Habit7", 
-      "Habit8", 
+      "Habit0",
+      "Habit1",
+      "Habit2",
+      "Habit3",
+      "Habit4",
+      "Habit5",
+      "Habit6",
+      "Habit7",
+      "Habit8",
       "Habit9"
-    ], 
-    "enableMultiJS": true, 
+    ],
+    "enableMultiJS": true,
     "targetPlatforms": [
-      "aplite", 
-      "basalt", 
-      "chalk", 
-      "diorite"
-    ], 
+      "aplite",
+      "basalt",
+      "chalk",
+      "diorite",
+      "emery",
+      "flint"
+    ],
     "capabilities": [
       "configurable"
-    ], 
+    ],
     "watchapp": {
       "watchface": false
-    }, 
+    },
     "resources": {
       "media": [
         {
-          "type": "bitmap", 
-          "name": "CHECKED", 
+          "type": "bitmap",
+          "name": "CHECKED",
           "file": "images/checked.png"
-        }, 
+        },
         {
-          "type": "bitmap", 
-          "name": "UNCHECKED", 
+          "type": "bitmap",
+          "name": "UNCHECKED",
           "file": "images/unchecked.png"
-        }, 
+        },
         {
-          "type": "bitmap", 
-          "name": "CHALK_ICON", 
+          "type": "bitmap",
+          "name": "CHALK_ICON",
           "file": "images/spike_chalk.pbl.png"
-        }, 
+        },
         {
-          "type": "bitmap", 
-          "name": "WHITE_CHECKED", 
+          "type": "bitmap",
+          "name": "WHITE_CHECKED",
           "file": "images/white_checked.png"
-        }, 
+        },
         {
-          "type": "bitmap", 
-          "name": "WHITE_UNCHECKED", 
+          "type": "bitmap",
+          "name": "WHITE_UNCHECKED",
           "file": "images/white_unchecked.png"
-        }, 
+        },
         {
-          "type": "bitmap", 
-          "name": "GRAPH", 
+          "type": "bitmap",
+          "name": "GRAPH",
           "file": "images/graph4.pbl.png"
+        },
+        {
+          "menuIcon": true,
+          "type": "bitmap",
+          "name": "IMAGE_MENU_ICON",
+          "file": "images/Pebble_25x25_Generic_confirmation.png"
         }
       ]
     }
-  }, 
+  },
   "name": "pebble_habit_tracker"
 }
