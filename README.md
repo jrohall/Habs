@@ -68,7 +68,8 @@ Not open at the moment, coming soon!
 
 ## Authors
 
-* **jrohall** - *Beta 1.0* 
+* **jrohall** - *Beta 1.0*
+* **arenovas** 
 
 ## Acknowledgments
 
