@@ -67,11 +67,6 @@
           "file": "images/white_unchecked.png"
         },
         {
-          "type": "bitmap",
-          "name": "GRAPH",
-          "file": "images/graph4.pbl.png"
-        },
-        {
           "menuIcon": true,
           "type": "bitmap",
           "name": "IMAGE_MENU_ICON",

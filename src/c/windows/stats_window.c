@@ -10,9 +10,17 @@ TextLayer *layer0, *layer1, *layer2, *layer3, *layer4, *layer5, *layer6, *layer7
 // stats
 TextLayer *habit_0, *habit_1, *habit_2, *habit_3, *habit_4, *habit_5, *habit_6, *habit_7, *habit_8, *habit_9;
 // lines
-GBitmap *graph_bitmap;
-BitmapLayer *graph_layer;
+Layer *graph_layer_new;
 
+void graph_update_proc(Layer *layer, GContext *ctx){
+  GRect bounds = layer_get_bounds(layer);
+  graphics_context_set_stroke_color(ctx, GColorBlack);
+  graphics_draw_line(ctx, GPoint(bounds.size.w * 0.5, 0), GPoint(bounds.size.w * 0.5, bounds.size.h));
+  for(int y = 1; y < 11; y++)
+  {
+    graphics_draw_line(ctx, GPoint(bounds.size.w * 0.083, bounds.size.h * 0.089 * y), GPoint(bounds.size.w * 0.916, bounds.size.h * 0.089 * y));
+  }
+}
 
 void stats_window_load(Window *window){
   // unfortunately, I have to manage each habit individually...
@@ -28,24 +36,24 @@ void stats_window_load(Window *window){
   char *habit9_label = load_habit9();
 
   // grabbing the window layer to apply the text
-	Layer *window_layer = window_get_root_layer(window);
+  Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
+  //GRect layer_bounds = window_bounds;
 
   // setting the lines
-  graph_bitmap = gbitmap_create_with_resource(RESOURCE_ID_GRAPH);
-  graph_layer = bitmap_layer_create(bounds);
-  bitmap_layer_set_bitmap(graph_layer, graph_bitmap);
-  layer_add_child(window_layer, bitmap_layer_get_layer(graph_layer));
+  graph_layer_new = layer_create(bounds);
+  layer_set_update_proc(graph_layer_new, graph_update_proc);
+  layer_add_child(window_layer, graph_layer_new);
 
   // chart headings
 
-  title1 = text_layer_create(GRect(15, 1, 148, 166));
+  title1 = text_layer_create(GRect(bounds.size.h * 0.1, -2, 148, 166));
   text_layer_set_text(title1, "Habits");
   text_layer_set_text_color(title1, GColorBlack);
   text_layer_set_background_color(title1, GColorClear);
   layer_add_child(window_layer, text_layer_get_layer(title1));
 
-  title2 = text_layer_create(GRect(80, 1, 148, 166));
+  title2 = text_layer_create(GRect(bounds.size.h * 0.48, -2, 148, 166));
   text_layer_set_text(title2, "Streaks");
   text_layer_set_text_color(title2, GColorBlack);
   text_layer_set_background_color(title2, GColorClear);
@@ -53,10 +61,14 @@ void stats_window_load(Window *window){
 
 
   // settings x and y values, change_y and change_x will be how much the labels will change with respect to the original values
-	int label_x = 15;
-  int label_y = 15;
-  int change_y = 15;
-  int change_x = 80;
+  //int label_x = 15;
+  //int label_y = 15;
+  //int change_y = 15;
+  //int change_x = 80;
+  int label_x = bounds.size.w * 0.1;
+  int label_y = bounds.size.h * 0.089;
+  int change_y = bounds.size.h * 0.091;
+  int change_x = bounds.size.w * 0.48;
 
   // loading in the stats from the habits page
   int *habit_stats = load_data();

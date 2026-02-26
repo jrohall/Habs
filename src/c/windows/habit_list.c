@@ -228,7 +228,9 @@ void h_select_click_callback(MenuLayer *habit_menu_layer, MenuIndex *cell_index,
 // observe how this is carried out below:
 void habit_window_load(Window *window){
     // create it
-    habit_menu_layer = menu_layer_create(GRect(0, 0, 144, 168));
+    Layer *window_layer = window_get_root_layer(window);
+    GRect window_bounds = layer_get_unobstructed_bounds(window_layer);
+    habit_menu_layer = menu_layer_create(window_bounds);
  
     // let it receive clicks
     menu_layer_set_click_config_onto_window(habit_menu_layer, habit_window);

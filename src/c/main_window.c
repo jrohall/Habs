@@ -351,8 +351,10 @@ char * load_habit9(){
 // observe how this is carried out below:
 void window_load(Window *window)
 {
-    //Create it - 12 is approx height of the top bar
-    menu_layer = menu_layer_create(GRect(0, 0, 144, 168 - 16));
+    //Create it
+    Layer *window_layer = window_get_root_layer(window);
+    GRect window_bounds = layer_get_unobstructed_bounds(window_layer);
+    menu_layer = menu_layer_create(window_bounds);
  
     //Let it receive clicks
     menu_layer_set_click_config_onto_window(menu_layer, window);
